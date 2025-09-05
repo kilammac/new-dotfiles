@@ -1,0 +1,160 @@
+@import "mocha.css";
+
+/* Police globale */
+* {
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+  font-size: 15px;
+}
+
+/* Barre principale */
+window#waybar {
+  background: transparent;
+  color: @teal;
+  border-radius: 7rem;
+  border: 2px solid @teal;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  padding: 0px;
+  border: 0px;
+}
+
+/* Style général des modules */
+#clock,
+#battery,
+#cpu,
+#custom-nvme:hover,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#bluetooth,
+#idle_inhibitor,
+#power-profiles-daemon,
+#custom-update,
+#mpris {
+  background-color: transparent;
+  padding: 0 10px;
+  border-radius: 7rem;
+  transition: all 0.3s ease;
+}
+
+/* Effet hover pour tous les modules */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#custom-nvme:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover,
+#bluetooth:hover,
+#idle_inhibitor:hover,
+#power-profiles-daemon:hover,
+#custom-update:hover,
+#mpris:hover {
+  background-color: @maroon;
+  color: @base;
+}
+
+/* Espaces de travail */
+#workspaces {
+  border-radius: 7rem;
+  background-color: transparent;
+}
+
+#workspaces button {
+  color: @teal;
+  border-radius: 7rem;
+  padding: 0 8px;
+  transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+  color: @base;
+  background-color: @teal;
+}
+
+#workspaces button:hover {
+  color: @base;
+  background-color: @maroon;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+/* Modules personnalisés */
+#custom-arch {
+  margin-left: 5px;
+  padding: 0 10px;
+  font-size: 25px;
+  background-color: transparent;
+  border-radius: 7rem;
+  transition: all 0.3s ease;
+}
+
+#custom-arch:hover {
+  background-color: @maroon;
+  color: @base;
+}
+
+#custom-power {
+  margin-right: 5px;
+  padding: 0 10px;
+  background-color: transparent;
+  border-radius: 7rem;
+  transition: all 0.3s ease;
+}
+
+#custom-power:hover {
+  background-color: @maroon;
+  color: @base;
+}
+
+/* États spéciaux */
+#battery.warning {
+  background-color: @yellow;
+  color: @base;
+}
+
+#battery.critical {
+  background-color: @red;
+  color: @base;
+  animation: blink 0.5s linear infinite alternate;
+}
+
+#temperature.critical {
+  background-color: @red;
+  color: @base;
+}
+
+/* Animations */
+@keyframes blink {
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* MPRIS */
+#mpris {
+  border-radius: 7rem;
+  background-color: transparent;
+  padding: 0 10px;
+}
+
+#mpris:hover {
+  background-color: @maroon;
+  color: @base;
+}
+
+/* Visualiseur audio personnalisé */
+#custom-cava_mviz {
+  color: @pink;
+}
+

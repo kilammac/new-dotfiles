@@ -1,0 +1,76 @@
+# Navigateurs et applications avec données personnelles
+chromium/
+google-chrome/
+chrome/
+firefox/
+Mozilla/
+BraveSoftware/
+Android Open Source Project/
+Android\ Open\ Source\ Project/
+# Applications de communication
+discord/
+slack/
+teams/
+skype/
+telegram/
+whatsapp/
+
+# Streaming et média
+spotify/
+vlc/
+mpv/
+
+# Gaming
+steam/
+lutris/
+
+# Système et session
+pulse/
+pipewire/
+dconf/
+gconf/
+session/
+autostart/
+systemd/
+kde*/
+gnome*/
+xfce*/
+
+# Cache et fichiers temporaires
+**/cache/
+**/Cache/
+**/caches/
+**/logs/
+**/tmp/
+**/temp/
+**/*.log
+**/*.cache
+**/*.tmp
+**/node_modules/
+**/__pycache__/
+
+# Fichiers de verrouillage et PID
+**/*.lock
+**/*.pid
+
+# Fichiers sensibles
+**/secrets/
+**/*password*
+**/*token*
+**/*.key
+**/*.pem
+**/credentials/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VSCode workspace spécifique
+Code/User/workspaceStorage/
+Code/User/globalStorage/
+Code/User/History/
+
+# Electron apps data
+Electron/
+electron/

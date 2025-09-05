@@ -1,0 +1,46 @@
+
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "position": "top",
+//  "spacing": 2,
+//"output": [
+  //      "eDP-1",
+    //    "DP-9"
+       // "desc:ASUSTek COMPUTER INC XG349C M8LMRS028225"
+   // ],  
+  // Modules de gauche
+  "modules-left": [
+    "custom/arch",
+    "cpu",
+    "memory",
+    "temperature",
+    "power-profiles-daemon",
+    "custom/update",
+    "custom/nvme"
+  ],
+  
+  // Modules du centre
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  
+  // Modules de droite
+  "modules-right": [
+    "idle_inhibitor",
+    "pulseaudio",
+    "backlight",
+    "network#speed",
+    "bluetooth",
+    "tray",
+    "battery",
+    "clock",
+    "custom/power"
+  ],
+  
+  // Inclusion de la configuration des modules
+  "include": [
+    "~/.config/waybar/modules.jsonc"
+  ]
+}
+
