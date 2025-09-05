@@ -74,3 +74,4 @@ Code/User/History/
 # Electron apps data
 Electron/
 electron/
+.gitignore
