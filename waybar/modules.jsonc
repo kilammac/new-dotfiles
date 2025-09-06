@@ -137,7 +137,7 @@
     "tooltip-format-disconnected": " Disconnected",
     "min-length": 24,
     "max-length": 24,
-    "on-click": "foot -e  nmtui"
+    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/rofi-wifi.sh'"
   },
 
   // Bluetooth
