@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<meta name="description" content="Install Debian 13 with Btrfs snapshots and rollback support. Create a resilient Linux system with Snapper, GRUB-Btrfs, and easy recovery from update issues."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://sysguides.com/install-debian-13-with-btrfs" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System" />
+<meta property="og:description" content="Install Debian 13 with Btrfs snapshots and rollback support. Create a resilient Linux system with Snapper, GRUB-Btrfs, and easy recovery from update issues." />
+<meta property="og:url" content="https://sysguides.com/install-debian-13-with-btrfs" />
+<meta property="og:site_name" content="SysGuides" />
+<meta property="article:publisher" content="https://www.facebook.com/SysGuides" />
+<meta property="article:tag" content="BtrFS" />
+<meta property="article:tag" content="Debian" />
+<meta property="article:tag" content="Rollback" />
+<meta property="article:tag" content="Snapshot" />
+<meta property="article:section" content="Distro" />
+<meta property="og:updated_time" content="2025-10-11T21:44:08+05:30" />
+<meta property="fb:app_id" content="4300271606684541" />
+<meta property="og:image" content="https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png" />
+<meta property="og:image:secure_url" content="https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta property="og:image:alt" content="How to Install Debian 13 with Btrfs - Featured Image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="article:published_time" content="2025-10-10T09:25:04+05:30" />
+<meta property="article:modified_time" content="2025-10-11T21:44:08+05:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System" />
+<meta name="twitter:description" content="Install Debian 13 with Btrfs snapshots and rollback support. Create a resilient Linux system with Snapper, GRUB-Btrfs, and easy recovery from update issues." />
+<meta name="twitter:site" content="@SysGuides" />
+<meta name="twitter:creator" content="@SysGuides" />
+<meta name="twitter:image" content="https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="Madhu Desai" />
+<meta name="twitter:label2" content="Time to read" />
+<meta name="twitter:data2" content="19 minutes" />
+<script type="application/ld+json" class="rank-math-schema">{"@context":"https://schema.org","@graph":[{"@type":["Person","Organization"],"@id":"https://sysguides.com/#person","name":"Madhu Desai","sameAs":["https://www.facebook.com/SysGuides","https://twitter.com/SysGuides"],"logo":{"@type":"ImageObject","@id":"https://sysguides.com/#logo","url":"https://sysguides.com/wp-content/uploads/2021/10/SysGuides-Logo-200_44.svg","contentUrl":"https://sysguides.com/wp-content/uploads/2021/10/SysGuides-Logo-200_44.svg","caption":"SysGuides","inLanguage":"en-US"},"image":{"@type":"ImageObject","@id":"https://sysguides.com/#logo","url":"https://sysguides.com/wp-content/uploads/2021/10/SysGuides-Logo-200_44.svg","contentUrl":"https://sysguides.com/wp-content/uploads/2021/10/SysGuides-Logo-200_44.svg","caption":"SysGuides","inLanguage":"en-US"}},{"@type":"WebSite","@id":"https://sysguides.com/#website","url":"https://sysguides.com","name":"SysGuides","publisher":{"@id":"https://sysguides.com/#person"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png","url":"https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png","width":"1280","height":"720","caption":"How to Install Debian 13 with Btrfs - Featured Image","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://sysguides.com/install-debian-13-with-btrfs#webpage","url":"https://sysguides.com/install-debian-13-with-btrfs","name":"How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System","datePublished":"2025-10-10T09:25:04+05:30","dateModified":"2025-10-11T21:44:08+05:30","isPartOf":{"@id":"https://sysguides.com/#website"},"primaryImageOfPage":{"@id":"https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png"},"inLanguage":"en-US"},{"@type":"Person","@id":"https://sysguides.com/author/mddnix","name":"Madhu Desai","description":"Linux blogger and sysadmin with 15+ years of experience. I share practical guides, tips, and performance tweaks on SysGuides and YouTube.","url":"https://sysguides.com/author/mddnix","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/53c696ddc60ba6c0cb2775baff02997d2b4f8fb94366ab20c667ba4ac20524cf?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/53c696ddc60ba6c0cb2775baff02997d2b4f8fb94366ab20c667ba4ac20524cf?s=96&amp;d=mm&amp;r=g","caption":"Madhu Desai","inLanguage":"en-US"},"sameAs":["https://sysguides.com"]},{"@type":"BlogPosting","headline":"How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System","keywords":"Debian 13,Btrfs Snapshots,Rollback Support,Debian Installation Guide,Snapper Linux","datePublished":"2025-10-10T09:25:04+05:30","dateModified":"2025-10-11T21:44:08+05:30","articleSection":"Distro, Storage","author":{"@id":"https://sysguides.com/author/mddnix","name":"Madhu Desai"},"publisher":{"@id":"https://sysguides.com/#person"},"description":"Install Debian 13 with Btrfs snapshots and rollback support. Create a resilient Linux system with Snapper, GRUB-Btrfs, and easy recovery from update issues.","name":"How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System","@id":"https://sysguides.com/install-debian-13-with-btrfs#richSnippet","isPartOf":{"@id":"https://sysguides.com/install-debian-13-with-btrfs#webpage"},"image":{"@id":"https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://sysguides.com/install-debian-13-with-btrfs#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<title>How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System</title>
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel="alternate" type="application/rss+xml" title="SysGuides &raquo; Feed" href="https://sysguides.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="SysGuides &raquo; Comments Feed" href="https://sysguides.com/comments/feed" />
+<script id="wpp-js" src="https://sysguides.com/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=7.3.6" data-sampling="0" data-sampling-rate="100" data-api-url="https://sysguides.com/wp-json/wordpress-popular-posts" data-post-id="11579" data-token="687443d33b" data-lang="0" data-debug="0"></script>
+<link rel="alternate" type="application/rss+xml" title="SysGuides &raquo; How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System Comments Feed" href="https://sysguides.com/install-debian-13-with-btrfs/feed" />
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/sysguides.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+
+<style id='wp-block-site-logo-inline-css'>
+.wp-block-site-logo{box-sizing:border-box;line-height:0}.wp-block-site-logo a{display:inline-block;line-height:0}.wp-block-site-logo.is-default-size img{height:auto;width:120px}.wp-block-site-logo img{height:auto;max-width:100%}.wp-block-site-logo a,.wp-block-site-logo img{border-radius:inherit}.wp-block-site-logo.aligncenter{margin-left:auto;margin-right:auto;text-align:center}:root :where(.wp-block-site-logo.is-style-rounded){border-radius:9999px}
+</style>
+<style id='wp-block-navigation-link-inline-css'>
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{outline:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+</style>
+<link rel='stylesheet' id='wp-block-navigation-css' href='https://sysguides.com/wp-content/plugins/gutenberg/build/styles/block-library/navigation/style.css?ver=22.0.0' media='all' />
+<style id='wp-block-group-inline-css'>
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+</style>
+<style id='wp-block-post-terms-inline-css'>
+.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}
+</style>
+<style id='wp-block-post-title-inline-css'>
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+</style>
+<style id='wp-block-post-excerpt-inline-css'>
+:where(.wp-block-post-excerpt){box-sizing:border-box;margin-bottom:var(--wp--style--block-gap);margin-top:var(--wp--style--block-gap)}.wp-block-post-excerpt__excerpt{margin-bottom:0;margin-top:0}.wp-block-post-excerpt__more-text{margin-bottom:0;margin-top:var(--wp--style--block-gap)}.wp-block-post-excerpt__more-link{display:inline-block}
+</style>
+<link rel='stylesheet' id='wp-block-image-css' href='https://sysguides.com/wp-content/plugins/gutenberg/build/styles/block-library/image/style.css?ver=22.0.0' media='all' />
+<style id='wp-block-post-author-inline-css'>
+.wp-block-post-author{box-sizing:border-box;display:flex;flex-wrap:wrap}.wp-block-post-author__byline{font-size:.5em;margin-bottom:0;margin-top:0;width:100%}.wp-block-post-author__avatar{margin-right:1em}.wp-block-post-author__bio{font-size:.7em;margin-bottom:.7em}.wp-block-post-author__content{flex-basis:0;flex-grow:1}.wp-block-post-author__name{margin:0}
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+</style>
+<style id='wp-block-post-comments-link-inline-css'>
+.wp-block-post-comments-link{box-sizing:border-box}
+</style>
+<style id='wp-block-post-featured-image-inline-css'>
+.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image :where(img){box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:initial}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}
+</style>
+<style id='wp-block-columns-inline-css'>
+.wp-block-columns{box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns{align-items:normal!important}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:1.25em 2.375em}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:break-word}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+
+				ul.is-style-checkmark-list {
+					list-style-type: "\2713";
+				}
+
+				ul.is-style-checkmark-list li {
+					padding-inline-start: 1ch;
+				}
+</style>
+<style id='wp-block-spacer-inline-css'>
+.wp-block-spacer{clear:both}
+</style>
+<style id='wp-block-heading-inline-css'>
+h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+</style>
+<style id='wp-block-code-inline-css'>
+.wp-block-code{box-sizing:border-box}.wp-block-code code{direction:ltr;display:block;font-family:inherit;overflow-wrap:break-word;text-align:initial;white-space:pre-wrap}
+</style>
+<style id='wp-block-quote-inline-css'>
+.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}.wp-block-quote>cite{display:block}
+</style>
+<style id='wp-block-preformatted-inline-css'>
+.wp-block-preformatted{box-sizing:border-box;white-space:pre-wrap}:where(.wp-block-preformatted.has-background){padding:1.25em 2.375em}
+</style>
+<style id='wp-block-embed-inline-css'>
+.wp-block-embed.alignleft,.wp-block-embed.alignright,.wp-block[data-align=left]>[data-type="core/embed"],.wp-block[data-align=right]>[data-type="core/embed"]{max-width:360px;width:100%}.wp-block-embed.alignleft .wp-block-embed__wrapper,.wp-block-embed.alignright .wp-block-embed__wrapper,.wp-block[data-align=left]>[data-type="core/embed"] .wp-block-embed__wrapper,.wp-block[data-align=right]>[data-type="core/embed"] .wp-block-embed__wrapper{min-width:280px}.wp-block-cover .wp-block-embed{min-height:240px;min-width:320px}.wp-block-embed{overflow-wrap:break-word}.wp-block-embed :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-embed iframe{max-width:100%}.wp-block-embed__wrapper{position:relative}.wp-embed-responsive .wp-has-aspect-ratio .wp-block-embed__wrapper:before{content:"";display:block;padding-top:50%}.wp-embed-responsive .wp-has-aspect-ratio iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.wp-embed-responsive .wp-embed-aspect-21-9 .wp-block-embed__wrapper:before{padding-top:42.85%}.wp-embed-responsive .wp-embed-aspect-18-9 .wp-block-embed__wrapper:before{padding-top:50%}.wp-embed-responsive .wp-embed-aspect-16-9 .wp-block-embed__wrapper:before{padding-top:56.25%}.wp-embed-responsive .wp-embed-aspect-4-3 .wp-block-embed__wrapper:before{padding-top:75%}.wp-embed-responsive .wp-embed-aspect-1-1 .wp-block-embed__wrapper:before{padding-top:100%}.wp-embed-responsive .wp-embed-aspect-9-16 .wp-block-embed__wrapper:before{padding-top:177.77%}.wp-embed-responsive .wp-embed-aspect-1-2 .wp-block-embed__wrapper:before{padding-top:200%}
+</style>
+<style id='wp-block-post-content-inline-css'>
+.wp-block-post-content{display:flow-root}
+</style>
+<style id='wp-block-post-navigation-link-inline-css'>
+.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}
+</style>
+<style id='wp-block-comments-inline-css'>
+.wp-block-post-comments{box-sizing:border-box}.wp-block-post-comments .alignleft{float:left}.wp-block-post-comments .alignright{float:right}.wp-block-post-comments .navigation:after{clear:both;content:"";display:table}.wp-block-post-comments .commentlist{clear:both;list-style:none;margin:0;padding:0}.wp-block-post-comments .commentlist .comment{min-height:2.25em;padding-left:3.25em}.wp-block-post-comments .commentlist .comment p{font-size:1em;line-height:1.8;margin:1em 0}.wp-block-post-comments .commentlist .children{list-style:none;margin:0;padding:0}.wp-block-post-comments .comment-author{line-height:1.5}.wp-block-post-comments .comment-author .avatar{border-radius:1.5em;display:block;float:left;height:2.5em;margin-right:.75em;margin-top:.5em;width:2.5em}.wp-block-post-comments .comment-author cite{font-style:normal}.wp-block-post-comments .comment-meta{font-size:.875em;line-height:1.5}.wp-block-post-comments .comment-meta b{font-weight:400}.wp-block-post-comments .comment-meta .comment-awaiting-moderation{display:block;margin-bottom:1em;margin-top:1em}.wp-block-post-comments .comment-body .commentmetadata{font-size:.875em}.wp-block-post-comments .comment-form-author label,.wp-block-post-comments .comment-form-comment label,.wp-block-post-comments .comment-form-email label,.wp-block-post-comments .comment-form-url label{display:block;margin-bottom:.25em}.wp-block-post-comments .comment-form input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments .comment-form textarea{box-sizing:border-box;display:block;width:100%}.wp-block-post-comments .comment-form-cookies-consent{display:flex;gap:.25em}.wp-block-post-comments .comment-form-cookies-consent #wp-comment-cookies-consent{margin-top:.35em}.wp-block-post-comments .comment-reply-title{margin-bottom:0}.wp-block-post-comments .comment-reply-title :where(small){font-size:var(--wp--preset--font-size--medium,smaller);margin-left:.5em}.wp-block-post-comments .reply{font-size:.875em;margin-bottom:1.4em}.wp-block-post-comments input:not([type=submit]),.wp-block-post-comments textarea{border:1px solid #949494;font-family:inherit;font-size:1em}.wp-block-post-comments input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments textarea{padding:calc(.667em + 2px)}:where(.wp-block-post-comments input[type=submit]){border:none}.wp-block-comments{box-sizing:border-box}
+</style>
+<style id='wp-block-separator-inline-css'>
+@charset "UTF-8";.wp-block-separator{border:none;border-top:2px solid}:root :where(.wp-block-separator.is-style-dots){height:auto;line-height:1;text-align:center}:root :where(.wp-block-separator.is-style-dots):before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}.wp-block-separator.is-style-dots{background:none!important;border:none!important}
+</style>
+<style id='wp-block-post-date-inline-css'>
+.wp-block-post-date{box-sizing:border-box}
+</style>
+<style id='wp-block-post-template-inline-css'>
+.wp-block-post-template{box-sizing:border-box;list-style:none;margin-bottom:0;margin-top:0;max-width:100%;padding:0}.wp-block-post-template.is-flex-container{display:flex;flex-direction:row;flex-wrap:wrap;gap:1.25em}.wp-block-post-template.is-flex-container>li{margin:0;width:100%}@media (min-width:600px){.wp-block-post-template.is-flex-container.is-flex-container.columns-2>li{width:calc(50% - .625em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-3>li{width:calc(33.33333% - .83333em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-4>li{width:calc(25% - .9375em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-5>li{width:calc(20% - 1em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-6>li{width:calc(16.66667% - 1.04167em)}}@media (max-width:600px){.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid{grid-template-columns:1fr}}.wp-block-post-template-is-layout-constrained>li>.alignright,.wp-block-post-template-is-layout-flow>li>.alignright{float:right;margin-inline-end:0;margin-inline-start:2em}.wp-block-post-template-is-layout-constrained>li>.alignleft,.wp-block-post-template-is-layout-flow>li>.alignleft{float:left;margin-inline-end:2em;margin-inline-start:0}.wp-block-post-template-is-layout-constrained>li>.aligncenter,.wp-block-post-template-is-layout-flow>li>.aligncenter{margin-inline-end:auto;margin-inline-start:auto}
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--base: #FFFFFF;--wp--preset--color--contrast: #1A1A1A;--wp--preset--color--accent-1: #3B82F6;--wp--preset--color--accent-2: #2563EB;--wp--preset--color--section-bg: #F7F9FB;--wp--preset--color--sidebar-bg: #F1F3F5;--wp--preset--color--accent-3: #E5E7EB;--wp--preset--color--code-bg: #F5F5F5;--wp--preset--color--custom-black-color: #000;--wp--preset--color--custom-terminal-color: #1a1a1a;--wp--preset--color--custom-output-color: #bfbfbf;--wp--preset--color--custom-comment-color: #26bc84;--wp--preset--color--custom-highlight-1-color: #ffbf00;--wp--preset--color--custom-highlight-2-color: #66ddff;--wp--preset--color--custom-highlight-3-color: #bdb76b;--wp--preset--color--custom-highlight-4-color: #ff4e33;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 0.875rem;--wp--preset--font-size--medium: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.196), 1.125rem);--wp--preset--font-size--large: clamp(1.125rem, 1.125rem + ((1vw - 0.2rem) * 0.392), 1.375rem);--wp--preset--font-size--x-large: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 0.392), 2rem);--wp--preset--font-size--xx-large: clamp(2.15rem, 2.15rem + ((1vw - 0.2rem) * 1.333), 3rem);--wp--preset--font-family--manrope: Manrope, sans-serif;--wp--preset--font-family--fira-code: "Fira Code", monospace;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--spacing--20: 10px;--wp--preset--spacing--30: 20px;--wp--preset--spacing--40: 30px;--wp--preset--spacing--50: clamp(30px, 5vw, 50px);--wp--preset--spacing--60: clamp(30px, 7vw, 70px);--wp--preset--spacing--70: clamp(50px, 7vw, 90px);--wp--preset--spacing--80: clamp(70px, 10vw, 140px);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 645px;--wp--style--global--wide-size: 1340px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 1.2rem; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 1.2rem; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 1.2rem;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 1.2rem;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 1.2rem;}:root :where(.is-layout-grid){gap: 1.2rem;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--base);color: #000000;font-family: var(--wp--preset--font-family--inter);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.392), 18px);font-style: normal;font-weight: 400;letter-spacing: -0.1px;line-height: 1.65;--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: var(--wp--preset--spacing--50);--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: var(--wp--preset--spacing--50);}a:where(:not(.wp-element-button)){color: currentColor;text-decoration: underline;}:root :where(a:where(:not(.wp-element-button)):hover){text-decoration: none;}h1, h2, h3, h4, h5, h6{font-style: normal;font-weight: 400;letter-spacing: -0.1px;line-height: 1.125;}h1{font-size: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.369), 36px);font-style: normal;font-weight: 700;line-height: 1.25;}h2{font-size: clamp(18.959px, 1.185rem + ((1vw - 3.2px) * 1.082), 30px);font-style: normal;font-weight: 700;line-height: 1.35;}h3{font-size: clamp(16.834px, 1.052rem + ((1vw - 3.2px) * 0.899), 26px);font-style: normal;font-weight: 600;line-height: 1.45;}h4{font-size: clamp(14.642px, 0.915rem + ((1vw - 3.2px) * 0.721), 22px);font-style: normal;font-weight: 600;line-height: 1.6;}h5{font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.49), 19px);font-style: normal;font-weight: 500;letter-spacing: 0.5px;line-height: 1.65;}h6{font-size: var(--wp--preset--font-size--small);font-weight: 700;letter-spacing: 1.4px;text-transform: uppercase;}:root :where(.wp-element-button, .wp-block-button__link){background-color: var(--wp--preset--color--accent-1);border-width: 0;color: var(--wp--preset--color--base);font-family: inherit;font-size: var(--wp--preset--font-size--medium);font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: 1rem;padding-right: 2.25rem;padding-bottom: 1rem;padding-left: 2.25rem;text-decoration: none;text-transform: inherit;}:root :where(.wp-element-button:hover, .wp-block-button__link:hover){background-color: var(--wp--preset--color--accent-2);border-color: transparent;color: var(--wp--preset--color--base);}:root :where(.wp-element-button:focus, .wp-block-button__link:focus){outline-color: var(--wp--preset--color--accent-4);outline-offset: 2px;}:root :where(.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption){font-size: var(--wp--preset--font-size--small);line-height: 1.4;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-accent-1-color{color: var(--wp--preset--color--accent-1) !important;}.has-accent-2-color{color: var(--wp--preset--color--accent-2) !important;}.has-section-bg-color{color: var(--wp--preset--color--section-bg) !important;}.has-sidebar-bg-color{color: var(--wp--preset--color--sidebar-bg) !important;}.has-accent-3-color{color: var(--wp--preset--color--accent-3) !important;}.has-code-bg-color{color: var(--wp--preset--color--code-bg) !important;}.has-custom-black-color-color{color: var(--wp--preset--color--custom-black-color) !important;}.has-custom-terminal-color-color{color: var(--wp--preset--color--custom-terminal-color) !important;}.has-custom-output-color-color{color: var(--wp--preset--color--custom-output-color) !important;}.has-custom-comment-color-color{color: var(--wp--preset--color--custom-comment-color) !important;}.has-custom-highlight-1-color-color{color: var(--wp--preset--color--custom-highlight-1-color) !important;}.has-custom-highlight-2-color-color{color: var(--wp--preset--color--custom-highlight-2-color) !important;}.has-custom-highlight-3-color-color{color: var(--wp--preset--color--custom-highlight-3-color) !important;}.has-custom-highlight-4-color-color{color: var(--wp--preset--color--custom-highlight-4-color) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-accent-1-background-color{background-color: var(--wp--preset--color--accent-1) !important;}.has-accent-2-background-color{background-color: var(--wp--preset--color--accent-2) !important;}.has-section-bg-background-color{background-color: var(--wp--preset--color--section-bg) !important;}.has-sidebar-bg-background-color{background-color: var(--wp--preset--color--sidebar-bg) !important;}.has-accent-3-background-color{background-color: var(--wp--preset--color--accent-3) !important;}.has-code-bg-background-color{background-color: var(--wp--preset--color--code-bg) !important;}.has-custom-black-color-background-color{background-color: var(--wp--preset--color--custom-black-color) !important;}.has-custom-terminal-color-background-color{background-color: var(--wp--preset--color--custom-terminal-color) !important;}.has-custom-output-color-background-color{background-color: var(--wp--preset--color--custom-output-color) !important;}.has-custom-comment-color-background-color{background-color: var(--wp--preset--color--custom-comment-color) !important;}.has-custom-highlight-1-color-background-color{background-color: var(--wp--preset--color--custom-highlight-1-color) !important;}.has-custom-highlight-2-color-background-color{background-color: var(--wp--preset--color--custom-highlight-2-color) !important;}.has-custom-highlight-3-color-background-color{background-color: var(--wp--preset--color--custom-highlight-3-color) !important;}.has-custom-highlight-4-color-background-color{background-color: var(--wp--preset--color--custom-highlight-4-color) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-accent-1-border-color{border-color: var(--wp--preset--color--accent-1) !important;}.has-accent-2-border-color{border-color: var(--wp--preset--color--accent-2) !important;}.has-section-bg-border-color{border-color: var(--wp--preset--color--section-bg) !important;}.has-sidebar-bg-border-color{border-color: var(--wp--preset--color--sidebar-bg) !important;}.has-accent-3-border-color{border-color: var(--wp--preset--color--accent-3) !important;}.has-code-bg-border-color{border-color: var(--wp--preset--color--code-bg) !important;}.has-custom-black-color-border-color{border-color: var(--wp--preset--color--custom-black-color) !important;}.has-custom-terminal-color-border-color{border-color: var(--wp--preset--color--custom-terminal-color) !important;}.has-custom-output-color-border-color{border-color: var(--wp--preset--color--custom-output-color) !important;}.has-custom-comment-color-border-color{border-color: var(--wp--preset--color--custom-comment-color) !important;}.has-custom-highlight-1-color-border-color{border-color: var(--wp--preset--color--custom-highlight-1-color) !important;}.has-custom-highlight-2-color-border-color{border-color: var(--wp--preset--color--custom-highlight-2-color) !important;}.has-custom-highlight-3-color-border-color{border-color: var(--wp--preset--color--custom-highlight-3-color) !important;}.has-custom-highlight-4-color-border-color{border-color: var(--wp--preset--color--custom-highlight-4-color) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-xx-large-font-size{font-size: var(--wp--preset--font-size--xx-large) !important;}.has-manrope-font-family{font-family: var(--wp--preset--font-family--manrope) !important;}.has-fira-code-font-family{font-family: var(--wp--preset--font-family--fira-code) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}
+:root :where(.wp-block-columns-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-columns-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--50);margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-columns-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--50);margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-flex){gap: var(--wp--preset--spacing--50);}:root :where(.wp-block-columns-is-layout-grid){gap: var(--wp--preset--spacing--50);}
+:root :where(.wp-block-code){background-color: var(--wp--preset--color--contrast);border-radius: 5px;color: var(--wp--preset--color--base);font-family: var(--wp--preset--font-family--fira-code);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);font-style: normal;font-weight: 400;line-height: 1.45;padding-top: var(--wp--preset--spacing--30);padding-right: var(--wp--preset--spacing--30);padding-bottom: var(--wp--preset--spacing--30);padding-left: var(--wp--preset--spacing--30);}
+:root :where(.wp-block-post-date){color: var(--wp--preset--color--accent-4);font-size: var(--wp--preset--font-size--small);}
+:root :where(.wp-block-post-date a:where(:not(.wp-element-button))){color: var(--wp--preset--color--accent-4);text-decoration: none;}
+:root :where(.wp-block-post-date a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-post-navigation-link){font-size: var(--wp--preset--font-size--medium);}
+:root :where(.wp-block-post-terms){font-size: var(--wp--preset--font-size--small);font-weight: 600;}:root :where(.wp-block-post-terms a){white-space: nowrap;}
+:root :where(.wp-block-post-title){font-size: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.369), 36px);line-height: 1.25;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-quote){border-color: currentColor;border-width: 0 0 0 2px;border-style: solid;color: #333333;font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);font-style: normal;font-weight: 400;margin-right: 0;margin-left: 0;padding-top: var(--wp--preset--spacing--20);padding-right: var(--wp--preset--spacing--30);padding-bottom: var(--wp--preset--spacing--20);padding-left: var(--wp--preset--spacing--30);}:root :where(.wp-block-quote-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-quote-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-quote-is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--30);margin-block-end: 0;}:root :where(.wp-block-quote-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-quote-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-quote-is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--30);margin-block-end: 0;}:root :where(.wp-block-quote-is-layout-flex){gap: var(--wp--preset--spacing--30);}:root :where(.wp-block-quote-is-layout-grid){gap: var(--wp--preset--spacing--30);}:root :where(.wp-block-quote.has-text-align-right ){border-width: 0 2px 0 0;}:root :where(.wp-block-quote.has-text-align-center ){border-width: 0;border-inline: 0; padding-inline: 0;}
+:root :where(.wp-block-quote cite){font-size: var(--wp--preset--font-size--small);font-style: normal;font-weight: 300;}:root :where(.wp-block-quote cite sub){font-size: 0.65em}
+:root :where(.wp-block-quote a:where(:not(.wp-element-button))){color: #333333;}
+:root :where(.wp-block-separator){border-color: currentColor;border-width: 0 0 1px 0;border-style: solid;color: var(--wp--preset--color--accent-6);}
+:root :where(.wp-block-navigation){font-size: var(--wp--preset--font-size--medium);}
+:root :where(.wp-block-navigation a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-navigation a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-list li){margin-top: 0.5rem;}
+:root :where(.wp-block-preformatted){font-family: var(--wp--preset--font-family--fira-code);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);line-height: 1.45;padding-top: 0;padding-right: 0;padding-bottom: var(--wp--preset--spacing--20);padding-left: 0;}:root :where(.wp-block-preformatted.wp-block-preformatted){white-space:pre;overflow:auto;}
+</style>
+<style id='block-style-variation-styles-inline-css'>
+:root :where(.is-style-post-terms-1--2 a:where(:not(.wp-element-button))){border-radius: 20px;border-color: var(--wp--preset--color--accent-6);border-width: 0.8px;border-style: solid;font-weight: 400;line-height: 2.8;padding-top: 5px;padding-right: 10px;padding-bottom: 5px;padding-left: 10px;text-decoration: none;}:root :where(.is-style-post-terms-1--2 a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id='wp-block-template-skip-link-inline-css'>
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+</style>
+<style id='core-block-supports-inline-css'>
+.wp-elements-5beaf25e98c1b7942ddefe6725705373 a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-navigation-is-layout-f665d2b5{justify-content:flex-end;}.wp-container-core-group-is-layout-17124a9a{flex-wrap:nowrap;justify-content:flex-end;}.wp-container-core-group-is-layout-cfa71c41{justify-content:space-between;}.wp-elements-f273039c4fe7c577bbf1ae43f3b7394e a:where(:not(.wp-element-button)){color:#cccccc;}.wp-elements-84e880260263e320bb699df7ce5de12a a:where(:not(.wp-element-button)){color:var(--wp--preset--color--base);}.wp-elements-ead4db6bd67a832421b175d2708e9b35 a:where(:not(.wp-element-button)){color:#cccccc;}.wp-elements-1c6bb0759f2bddca035397d2db3dd3f0 a:where(:not(.wp-element-button)){color:var(--wp--preset--color--base);}.wp-container-core-group-is-layout-f1189ed3{flex-wrap:nowrap;gap:var(--wp--preset--spacing--20);}.wp-elements-9757b0efe9f0ccf37d23a628871a69e7 a:where(:not(.wp-element-button)){color:#cccccc;}.wp-elements-7de04efd9e2a8c206275d959a43d621a a:where(:not(.wp-element-button)){color:#cccccc;}.wp-container-core-group-is-layout-6ea4212b{gap:var(--wp--preset--spacing--30);}.wp-container-core-group-is-layout-c5c7d83f > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-c5c7d83f > * + *{margin-block-start:12px;margin-block-end:0;}.wp-container-core-columns-is-layout-28f84493{flex-wrap:nowrap;}.wp-container-core-group-is-layout-83710dc7 > .alignfull{margin-right:calc(var(--wp--preset--spacing--30) * -1);margin-left:calc(var(--wp--preset--spacing--30) * -1);}.wp-container-core-group-is-layout-274f5b33{flex-direction:column;align-items:flex-start;}.wp-elements-f047879ba9aa29095477d0a936da17fc a:where(:not(.wp-element-button)){color:#004d00;}.wp-container-core-post-content-is-layout-90e28d55 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:870px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-post-content-is-layout-90e28d55 > .alignwide{max-width:870px;}.wp-container-core-post-content-is-layout-90e28d55 .alignfull{max-width:none;}.wp-container-core-post-content-is-layout-90e28d55 > .alignfull{margin-right:calc(0px * -1);margin-left:calc(0px * -1);}.wp-container-core-group-is-layout-9b36172e{flex-wrap:nowrap;justify-content:space-between;}.wp-container-core-group-is-layout-ce155fab{flex-direction:column;align-items:center;}.wp-container-core-columns-is-layout-658170e2{flex-wrap:nowrap;gap:2em var(--wp--preset--spacing--30);}.wp-container-core-group-is-layout-154222c2{flex-wrap:nowrap;justify-content:space-between;align-items:center;}.wp-container-core-post-template-is-layout-3ee800f6 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-post-template-is-layout-3ee800f6 > * + *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-062495d1 > .alignfull{margin-right:calc(var(--wp--preset--spacing--30) * -1);margin-left:calc(var(--wp--preset--spacing--30) * -1);}.wp-container-core-navigation-is-layout-b2891da8{justify-content:space-between;}.wp-container-core-group-is-layout-e25567f2{justify-content:space-between;}
+</style>
+<link rel='stylesheet' id='wordpress-popular-posts-css-css' href='https://sysguides.com/wp-content/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=7.3.6' media='all' />
+<link rel='stylesheet' id='twentytwentyfive-style-css' href='https://sysguides.com/wp-content/themes/twentytwentyfive/style.css?ver=6.8.3' media='all' />
+<link rel='stylesheet' id='twentytwentyfive-child-style-css' href='https://sysguides.com/wp-content/themes/twentytwentyfive-child/style.css?ver=1.0.33' media='all' />
+<link rel='stylesheet' id='inter-font-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&#038;display=swap' media='all' />
+<link rel='stylesheet' id='wpdiscuz-frontend-css-css' href='https://sysguides.com/wp-content/plugins/wpdiscuz/themes/default/style.css?ver=7.6.37' media='all' />
+<style id='wpdiscuz-frontend-css-inline-css'>
+ #wpdcom .wpd-blog-administrator .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-administrator .wpd-comment-author, #wpdcom .wpd-blog-administrator .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-administrator{border-left:3px solid #00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-administrator .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-administrator .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-editor .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-editor .wpd-comment-author, #wpdcom .wpd-blog-editor .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-editor{border-left:3px solid #00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-editor .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-editor .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-author .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-author .wpd-comment-author, #wpdcom .wpd-blog-author .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-author .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-author .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-author .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-author .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-contributor .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-contributor .wpd-comment-author, #wpdcom .wpd-blog-contributor .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-contributor .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-contributor .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-subscriber .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-subscriber .wpd-comment-author, #wpdcom .wpd-blog-subscriber .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-subscriber .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-subscriber .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom .wpd-blog-post_author .wpd-comment-label{color:#ffffff;background-color:#0077d8;border:none}#wpdcom .wpd-blog-post_author .wpd-comment-author, #wpdcom .wpd-blog-post_author .wpd-comment-author a{color:#0077d8}#wpdcom .wpd-blog-post_author .wpd-avatar img{border-color:#0077d8}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-color:#0077d8}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-post_author{border-left:3px solid #0077d8}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-bottom-color:#0077d8}#wpdcom.wpd-layout-3 .wpd-blog-post_author .wpd-comment-subheader{border-top:1px dashed #0077d8}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-post_author .wpd-comment-right{border-left:1px solid #0077d8}#wpdcom .wpd-blog-guest .wpd-comment-label{color:#ffffff;background-color:#555555;border:none}#wpdcom .wpd-blog-guest .wpd-comment-author, #wpdcom .wpd-blog-guest .wpd-comment-author a{color:#555555}#wpdcom.wpd-layout-3 .wpd-blog-guest .wpd-comment-subheader{border-top:1px dashed #555555}#comments, #respond, .comments-area, #wpdcom{}#wpdcom .ql-editor > *{color:#666666}#wpdcom .ql-editor::before{}#wpdcom .ql-toolbar{border:1px solid #DDDDDD;border-top:none}#wpdcom .ql-container{border:1px solid #DDDDDD;border-bottom:none}#wpdcom .wpd-form-row .wpdiscuz-item input[type="text"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="email"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="url"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="color"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="date"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime-local"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="month"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="number"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="time"], #wpdcom textarea, #wpdcom select{border:1px solid #DDDDDD;color:#0d0d0d}#wpdcom .wpd-form-row .wpdiscuz-item textarea{border:1px solid #DDDDDD}#wpdcom input::placeholder, #wpdcom textarea::placeholder, #wpdcom input::-moz-placeholder, #wpdcom textarea::-webkit-input-placeholder{}#wpdcom .wpd-comment-text{color:#0d0d0d}#wpdcom .wpd-thread-head .wpd-thread-info{border-bottom:2px solid #00B38F}#wpdcom .wpd-thread-head .wpd-thread-info.wpd-reviews-tab svg{fill:#00B38F}#wpdcom .wpd-thread-head .wpdiscuz-user-settings{border-bottom:2px solid #00B38F}#wpdcom .wpd-thread-head .wpdiscuz-user-settings:hover{color:#00B38F}#wpdcom .wpd-comment .wpd-follow-link:hover{color:#00B38F}#wpdcom .wpd-comment-status .wpd-sticky{color:#00B38F}#wpdcom .wpd-thread-filter .wpdf-active{color:#00B38F;border-bottom-color:#00B38F}#wpdcom .wpd-comment-info-bar{border:1px dashed #33c3a6;background:#e6f8f4}#wpdcom .wpd-comment-info-bar .wpd-current-view i{color:#00B38F}#wpdcom .wpd-filter-view-all:hover{background:#00B38F}#wpdcom .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}#wpdcom .wpdiscuz-item .wpdiscuz-rating:not(:checked) > label:hover, .wpdiscuz-rating:not(:checked) > label:hover ~ label{}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label{color:#FFED85}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > label:hover ~ input:checked ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked + label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover ~ label, .wpd-custom-field .wcf-active-star, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label{color:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts:hover svg .wpd-star{fill:#FFED85}#wpd-post-rating.wpd-not-rated .wpd-rating-wrap .wpd-rate-starts svg:hover ~ svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpdcom .wpd-comment .wpd-follow-active{color:#ff7a00}#wpdcom .page-numbers{color:#555;border:#555 1px solid}#wpdcom span.current{background:#555}#wpdcom.wpd-layout-1 .wpd-new-loaded-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap > .wpd-comment-right{background:transparent}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap{background:#FFFAD6}#wpdcom.wpd-layout-3 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom .wpd-follow:hover i, #wpdcom .wpd-unfollow:hover i, #wpdcom .wpd-comment .wpd-follow-active:hover i{color:#00B38F}#wpdcom .wpdiscuz-readmore{cursor:pointer;color:#00B38F}.wpd-custom-field .wcf-pasiv-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}.wpd-wrapper .wpd-list-item.wpd-active{border-top:3px solid #00B38F}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-wrap{border-left:3px solid #FFFAD6}#wpdcom.wpd-layout-3 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-right{border-left:1px solid #FFFAD6}#wpdcom .wpd-prim-button{background-color:#07B290;color:#FFFFFF}#wpdcom .wpd_label__check i.wpdicon-on{color:#07B290;border:1px solid #83d9c8}#wpd-bubble-wrapper #wpd-bubble-all-comments-count{color:#1DB99A}#wpd-bubble-wrapper > div{background-color:#1DB99A}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message{background-color:#1DB99A}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#1DB99A;border-right-color:#1DB99A}#wpd-bubble-wrapper.wpd-right-corner > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#1DB99A;border-right-color:#1DB99A}.wpd-inline-icon-wrapper path.wpd-inline-icon-first{fill:#1DB99A}.wpd-inline-icon-count{background-color:#1DB99A}.wpd-inline-icon-count::before{border-right-color:#1DB99A}.wpd-inline-form-wrapper::before{border-bottom-color:#1DB99A}.wpd-inline-form-question{background-color:#1DB99A}.wpd-inline-form{background-color:#1DB99A}.wpd-last-inline-comments-wrapper{border-color:#1DB99A}.wpd-last-inline-comments-wrapper::before{border-bottom-color:#1DB99A}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments{background:#1DB99A}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus{background-color:#1DB99A}#wpdcom .ql-snow .ql-tooltip[data-mode="link"]::before{content:"Enter link:"}#wpdcom .ql-snow .ql-tooltip.ql-editing a.ql-action::after{content:"Save"}div#wpdcom{max-width:100% !important}#wpdcom .wpd-comment-text p{font-size:16px !important}
+</style>
+<link rel='stylesheet' id='wpdiscuz-fa-css' href='https://sysguides.com/wp-content/plugins/wpdiscuz/assets/third-party/font-awesome-5.13.0/css/fa.min.css?ver=7.6.37' media='all' />
+<link rel='stylesheet' id='wpdiscuz-combo-css-css' href='https://sysguides.com/wp-content/plugins/wpdiscuz/assets/css/wpdiscuz-combo.min.css?ver=6.8.3' media='all' />
+<script src="https://sysguides.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://sysguides.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=G-4CWMGE0SS9" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["sysguides.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "G-4CWMGE0SS9");
+</script>
+<link rel="https://api.w.org/" href="https://sysguides.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://sysguides.com/wp-json/wp/v2/posts/11579" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sysguides.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.8.3" />
+<link rel='shortlink' href='https://sysguides.com/?p=11579' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://sysguides.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsysguides.com%2Finstall-debian-13-with-btrfs" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://sysguides.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsysguides.com%2Finstall-debian-13-with-btrfs&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.165.0" /><script async src="https://fundingchoicesmessages.google.com/i/pub-4683280163957755?ers=1" nonce="yj3bJkv4w8O7wdAjQnRofQ"></script><script nonce="yj3bJkv4w8O7wdAjQnRofQ">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+
+
+            <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-block-placeholder,.wpp-shortcode-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
+            <script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress\/interactivity":"https:\/\/sysguides.com\/wp-content\/plugins\/gutenberg\/build\/modules\/interactivity\/index.min.js?ver=1762354539619"}}
+</script>
+<script type="module" src="https://sysguides.com/wp-content/plugins/gutenberg/build/modules/block-library/image/view.min.js?ver=1762354540102" id="@wordpress/block-library/image/view-js-module" data-wp-router-options="{&quot;loadOnClientNavigation&quot;:true}"></script>
+<script type="module" src="https://sysguides.com/wp-content/plugins/gutenberg/build/modules/block-library/navigation/view.min.js?ver=1762354540102" id="@wordpress/block-library/navigation/view-js-module" data-wp-router-options="{&quot;loadOnClientNavigation&quot;:true}"></script>
+<link rel="modulepreload" href="https://sysguides.com/wp-content/plugins/gutenberg/build/modules/interactivity/index.min.js?ver=1762354539619" id="@wordpress/interactivity-js-modulepreload">
+<!-- Google AdSense meta tags added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense meta tags added by Site Kit -->
+
+<!-- Google Tag Manager snippet added by Site Kit -->
+<script>
+			( function( w, d, s, l, i ) {
+				w[l] = w[l] || [];
+				w[l].push( {'gtm.start': new Date().getTime(), event: 'gtm.js'} );
+				var f = d.getElementsByTagName( s )[0],
+					j = d.createElement( s ), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore( j, f );
+			} )( window, document, 'script', 'dataLayer', 'GTM-WR43MH9' );
+			
+</script>
+
+<!-- End Google Tag Manager snippet added by Site Kit -->
+
+<!-- Google AdSense snippet added by Site Kit -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683280163957755&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+<style class='wp-fonts-local'>
+@font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:fallback;src:url('https://sysguides.com/wp-content/themes/twentytwentyfive/assets/fonts/manrope/Manrope-VariableFont_wght.woff2') format('woff2');}
+@font-face{font-family:"Fira Code";font-style:normal;font-weight:300 700;font-display:fallback;src:url('https://sysguides.com/wp-content/themes/twentytwentyfive/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2') format('woff2');}
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:fallback;src:url('https://sysguides.com/wp-content/uploads/fonts/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZ1rib2Bg-4.woff2') format('woff2');}
+</style>
+<link rel="icon" href="https://sysguides.com/wp-content/uploads/2022/12/cropped-fevicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://sysguides.com/wp-content/uploads/2022/12/cropped-fevicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://sysguides.com/wp-content/uploads/2022/12/cropped-fevicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://sysguides.com/wp-content/uploads/2022/12/cropped-fevicon-270x270.png" />
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-11579 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-twentytwentyfive wp-child-theme-twentytwentyfive-child">
+		<!-- Google Tag Manager (noscript) snippet added by Site Kit -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WR43MH9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) snippet added by Site Kit -->
+		
+<div class="wp-site-blocks"><header class="wp-block-template-part">
+<div class="wp-block-group alignfull has-contrast-color has-text-color has-link-color wp-elements-5beaf25e98c1b7942ddefe6725705373 is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-cfa71c41 wp-block-group-is-layout-flex" style="border-bottom-color:#d9d9d9;border-bottom-width:1px;padding-top:15px;padding-right:var(--wp--preset--spacing--30);padding-bottom:15px;padding-left:var(--wp--preset--spacing--30)"><div class="wp-block-site-logo"><a href="https://sysguides.com/" class="custom-logo-link" rel="home"><img src="https://sysguides.com/wp-content/uploads/2025/06/SysGuides-Logo-150_31.svg" class="custom-logo" alt="SysGuides" decoding="async" /></a></div>
+
+
+<div class="wp-block-group is-content-justification-right is-nowrap is-layout-flex wp-container-core-group-is-layout-17124a9a wp-block-group-is-layout-flex">
+<div class="header-search">
+  <button id="search-toggle" aria-label="Open search" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.35-4.35"></path>
+    </svg>
+  </button>
+  <form id="search-form" role="search" method="get" action="/" aria-label="Site Search">
+    <div class="search-input-wrapper">
+      <input type="search" name="s" placeholder="Search articles..." autocomplete="off" />
+      <button type="button" id="search-clear" aria-label="Clear search input">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<nav style="font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class="is-responsive items-justified-right wp-block-navigation is-content-justification-right is-layout-flex wp-container-core-navigation-is-layout-f665d2b5 wp-block-navigation-is-layout-flex" aria-label="Main Menu" 
+		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" 
+				data-wp-on--click="actions.openMenuOnClick"
+				data-wp-on--keydown="actions.handleMenuKeydown"
+			><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 5v1.5h14V5H5z"></path><path d="M5 12.8h14v-1.5H5v1.5z"></path><path d="M5 19h14v-1.5H5V19z"></path></svg></button>
+				<div class="wp-block-navigation__responsive-container"  id="modal-1" 
+				data-wp-class--has-modal-open="state.isMenuOpen"
+				data-wp-class--is-menu-open="state.isMenuOpen"
+				data-wp-watch="callbacks.initMenu"
+				data-wp-on--keydown="actions.handleMenuKeydown"
+				data-wp-on--focusout="actions.handleMenuFocusout"
+				tabindex="-1"
+			>
+					<div class="wp-block-navigation__responsive-close" tabindex="-1">
+						<div class="wp-block-navigation__responsive-dialog" 
+				data-wp-bind--aria-modal="state.ariaModal"
+				data-wp-bind--aria-label="state.ariaLabel"
+				data-wp-bind--role="state.roleAttribute"
+			>
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" 
+				data-wp-on--click="actions.closeMenuOnClick"
+			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
+							<div class="wp-block-navigation__responsive-container-content" 
+				data-wp-watch="callbacks.focusFirstElement"
+			 id="modal-1-content">
+								<ul style="font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class="wp-block-navigation__container is-responsive items-justified-right wp-block-navigation"><li style="font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class=" wp-block-navigation-item  menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/category/distro/" title=""><span class="wp-block-navigation-item__label">Distro</span></a></li><li style="font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class=" wp-block-navigation-item  menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/category/security/" title=""><span class="wp-block-navigation-item__label">Security</span></a></li><li style="font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class=" wp-block-navigation-item  menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/category/storage/" title=""><span class="wp-block-navigation-item__label">Storage</span></a></li><li style="font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.294), 17px);" class=" wp-block-navigation-item  menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/category/virtualization/" title=""><span class="wp-block-navigation-item__label">Virtualization</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+				</div></nav></div>
+</div>
+</header>
+
+
+<div class="wp-block-group post-title-section has-contrast-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-83710dc7 wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-columns alignwide is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:60%">
+<div class="wp-block-group is-layout-flow wp-container-core-group-is-layout-c5c7d83f wp-block-group-is-layout-flow"><div style="color:#cccccc;font-size:14px" class="taxonomy-category has-link-color wp-elements-f273039c4fe7c577bbf1ae43f3b7394e wp-block-post-terms has-text-color"><a href="https://sysguides.com/category/distro" rel="tag">Distro</a><span class="wp-block-post-terms__separator">, </span><a href="https://sysguides.com/category/storage" rel="tag">Storage</a></div>
+
+<h2 class="has-link-color wp-elements-84e880260263e320bb699df7ce5de12a wp-block-post-title has-text-color has-base-color">How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System</h2>
+
+<div style="color:#cccccc; font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.196), 16px);" class="has-link-color wp-elements-ead4db6bd67a832421b175d2708e9b35 wp-block-post-excerpt has-text-color"><p class="wp-block-post-excerpt__excerpt">Learn how to install Debian 13 with Btrfs snapshots and rollback support to build a resilient Linux system. This step-by-step guide covers subvolumes, Snapper, GRUB-Btrfs, and safe recovery from failed updates. </p></div>
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-f1189ed3 wp-block-group-is-layout-flex">
+<figure class="wp-block-image size-full is-resized has-custom-border"><a href="/author/mddnix"><img width="200" height="200" src="https://sysguides.com/wp-content/uploads/2025/06/madhu_desai_profile.png" alt="Madhu Desai Profile" class="wp-image-11289" style="border-radius:3px;object-fit:cover;width:32px;height:32px" srcset="https://sysguides.com/wp-content/uploads/2025/06/madhu_desai_profile.png 200w, https://sysguides.com/wp-content/uploads/2025/06/madhu_desai_profile-150x150.png 150w" sizes="(max-width: 200px) 100vw, 200px" /></a></figure>
+
+
+<div style="font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.196), 16px);font-style:normal;font-weight:500;letter-spacing:0.3px;" class="has-link-color wp-elements-1c6bb0759f2bddca035397d2db3dd3f0 wp-block-post-author has-text-color has-base-color"><div class="wp-block-post-author__content"><p class="wp-block-post-author__name"><a href="https://sysguides.com/author/mddnix" target="_self">Madhu Desai</a></p></div></div></div>
+
+
+
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-6ea4212b wp-block-group-is-layout-flex">
+<p class="has-text-color has-link-color wp-elements-9757b0efe9f0ccf37d23a628871a69e7" style="color:#cccccc;font-size:12px">Last Updated: October 11, 2025</p>
+
+
+<div style="font-size:12px;" class="has-link-color wp-elements-7de04efd9e2a8c206275d959a43d621a wp-block-post-comments-link"><a href=https://sysguides.com/install-debian-13-with-btrfs#comments>10 comments<span class="screen-reader-text"> on How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System</span></a></div></div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:40%">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><figure class="wp-block-post-featured-image"><img width="1280" height="720" src="https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="How to Install Debian 13 with Btrfs - Featured Image" style="object-fit:cover;" decoding="async" fetchpriority="high" srcset="https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image.png 1280w, https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image-300x169.png 300w, https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image-150x84.png 150w, https://sysguides.com/wp-content/uploads/2025/10/01-install-debian-13-with-btrfs-rollback-feature-image-768x432.png 768w" sizes="(max-width: 1280px) 100vw, 1280px" /></figure></div>
+</div>
+</div>
+</div>
+
+
+
+<main class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-is-layout-062495d1 wp-block-group-is-layout-constrained" style="margin-top:0;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-columns alignwide is-layout-flex wp-container-core-columns-is-layout-658170e2 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:70%"><div style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;" class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-container-core-post-content-is-layout-90e28d55 wp-block-post-content-is-layout-constrained">
+<div class="wp-block-group has-background is-vertical is-layout-flex wp-container-core-group-is-layout-274f5b33 wp-block-group-is-layout-flex" style="border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;background-color:#e6eeff;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+<p><strong>Benefits at a Glance</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Fast and reliable system recovery after failed updates or configuration issues</li>
+
+
+
+<li>Minimal data loss thanks to automatic and manual Btrfs snapshots</li>
+
+
+
+<li>Point-in-time rollback from GRUB menu, even before booting the system</li>
+
+
+
+<li>Easy management via Snapper or command line</li>
+
+
+
+<li>Cleaner and safer solution than traditional backup/restore for system volumes</li>
+</ul>
+</div>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Debian GNU/Linux is known for its stability and reliability. With Debian 13 "Trixie", you get updated packages, better hardware support, and five years of security updates, making it ideal for workstations, servers, and development environments.</p>
+
+
+
+<p>But what if you could add a <strong>safety net</strong> to Debian's stability? Pairing it with the <strong>Btrfs filesystem</strong> gives you instant snapshots and rollbacks, like an <strong>undo button</strong> for your entire system. Update broke something? Roll back in seconds. Want to test risky changes? Snapshot first and experiment fearlessly.</p>
+
+
+
+<p>Since Debian's graphical installer doesn't yet support custom Btrfs subvolumes, this tutorial uses the <strong>debootstrap method</strong> to manually build a production-ready system with:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Btrfs filesystem</strong> with optimized subvolume structure</li>
+
+
+
+<li><strong>Snapper</strong> for automated snapshot management</li>
+
+
+
+<li><strong>GRUB-Btrfs</strong> integration for booting into snapshots</li>
+
+
+
+<li><strong>Swap with hibernation support</strong></li>
+
+
+
+<li><strong>Easy rollback</strong> via Btrfs-Assistant</li>
+
+
+
+<li><strong>Desktop environment</strong> of your choice</li>
+</ul>
+
+
+
+<p>Whether you're a user seeking a resilient daily driver, a sysadmin wanting reliable rollback options, or a developer who experiments often, this guide helps you create a <strong>resilient Debian system</strong>.</p>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 class="wp-block-heading" id="prerequisites"><strong>Prerequisites:</strong></h3>
+
+
+<ul class="wp-block-list">
+<li><strong>Debian 13 (Trixie) Live ISO</strong>: Download the Live ISO (not the standard installation ISO) from the <a href="https://www.debian.org/distrib/" target="_blank" rel="noreferrer noopener">official Debian website</a>.</li>
+
+
+
+<li><strong>Target System</strong>: A physical or virtual machine for installing Debian.</li>
+
+
+
+<li><strong>Internet Connection</strong>: An active and stable internet connection.</li>
+
+
+
+<li><strong>Disk Space</strong>: Minimum 20 GB for the base system; 50 GB or more recommended for a desktop environment and adequate snapshot storage.</li>
+</ul>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="simpletoc-title">Table of Contents</h2>
+<ul class="simpletoc-list">
+
+<li><a href="#step-1-boot-into-the-live-environment">Step 1: Boot into the Live Environment</a>
+
+</li>
+<li><a href="#step-2-wipe-disk-and-create-gpt-partitions">Step 2: Wipe Disk and Create GPT Partitions</a>
+
+</li>
+<li><a href="#step-3-create-essential-btrfs-subvolumes">Step 3: Create Essential Btrfs Subvolumes</a>
+
+</li>
+<li><a href="#step-4-mount-the-subvolumes-for-installation">Step 4: Mount the Subvolumes for Installation</a>
+
+</li>
+<li><a href="#step-5-install-the-debian-13-base-system-with-debootstrap">Step 5: Install the Debian 13 Base System with debootstrap</a>
+
+</li>
+<li><a href="#step-6-configure-fstab">Step 6: Configure fstab</a>
+
+</li>
+<li><a href="#step-7-chroot-into-the-installed-system">Step 7: Chroot into the Installed System</a>
+
+</li>
+<li><a href="#step-8-configure-base-system-settings">Step 8: Configure Base System Settings</a>
+
+</li>
+<li><a href="#step-9-configure-repositories-and-install-base-packages">Step 9: Configure Repositories and Install Base Packages</a>
+
+</li>
+<li><a href="#step-10-create-swap-with-hibernation-support">Step 10: Create Swap with Hibernation Support</a>
+
+</li>
+<li><a href="#step-11-create-a-user">Step 11: Create a User</a>
+
+</li>
+<li><a href="#step-12-install-and-configure-grub-bootloader">Step 12: Install and Configure GRUB Bootloader</a>
+
+</li>
+<li><a href="#step-13-exit-chroot-and-reboot">Step 13: Exit Chroot and Reboot</a>
+
+</li>
+<li><a href="#step-14-install-the-desktop-environment">Step 14: Install the Desktop Environment</a>
+
+</li>
+<li><a href="#step-15-create-a-mozilla-subvolume-in-home">Step 15: Create a .mozilla Subvolume in Home</a>
+
+</li>
+<li><a href="#step-16-install-and-configure-snapper">Step 16: Install and Configure Snapper</a>
+
+</li>
+<li><a href="#step-17-install-grubbtrfs">Step 17: Install GRUB-Btrfs</a>
+
+</li>
+<li><a href="#step-18-enable-automatic-timeline-snapshots">Step 18: Enable Automatic Timeline Snapshots</a>
+
+</li>
+<li><a href="#step-19-test-your-snapshot-and-rollback-setup">Step 19: Test Your Snapshot and Rollback Setup</a>
+
+</li>
+<li><a href="#conclusion">Conclusion</a>
+
+</li>
+<li><a href="#watch-on-youtube">Watch on YouTube</a>
+</li></ul>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-1-boot-into-the-live-environment">Step 1: Boot into the Live Environment</h2>
+
+
+<p>Boot from the Debian 13 Live ISO or USB.</p>
+
+
+
+<p>I’ll be using the Debian GNOME Live edition since I’m setting up a GNOME desktop, but you can use any Debian Live edition. The choice of Live ISO doesn’t affect the final system. You can still install any desktop environment using the <kbd>debootstrap</kbd> method.</p>
+
+
+
+<p>Once on the desktop, open a terminal and switch to the root user to prepare for installation.</p>
+
+
+
+<pre class="wp-block-code"><code>sudo su</code></pre>
+
+
+
+<p>Run the following command to list all available disks:</p>
+
+
+
+<pre class="wp-block-code"><code>lsblk -p
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-output-color-color">NAME       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+/dev/loop0   7:0    0  3.1G  1 loop /run/live/rootfs/filesystem.squashfs
+/dev/sda     8:0    0  128G  0 disk 
+/dev/sr0    11:0    1  3.8G  0 rom  /run/live/medium</mark></code></pre>
+
+
+
+<p>This displays all your disks and their partitions. Identify the disk where you want to install Debian.</p>
+
+
+
+<p>Next, set a variable for your target disk. For example:</p>
+
+
+
+<pre class="wp-block-code"><code>export DISK="/dev/sda"</code></pre>
+
+
+
+<p>In this tutorial, I’m using <code>/dev/sda</code>, but replace it with the disk you want to install Debian on.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Warning:</strong> This tutorial assumes you will be using the entire disk stored in the <kbd><strong>DISK</strong></kbd> variable for installation. All data on that disk will be erased. Make sure you have backed up any important files before proceeding.</p>
+</blockquote>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p class="has-text-color has-link-color wp-elements-f047879ba9aa29095477d0a936da17fc" style="color:#004d00"><strong>Note: From this point onward, all commands in each code block are formatted so you can copy the entire block and paste it directly into your terminal, then press Enter. You don’t need to copy and run each command individually, which helps avoid typos and speeds up the installation process.</strong></p>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-2-wipe-disk-and-create-gpt-partitions">Step 2: Wipe Disk and Create GPT Partitions</h2>
+
+
+<p>First, we need to wipe the disk, create a fresh GPT layout, and set up the EFI and root partitions. The <code>gdisk</code> tool is required for this, but it is not installed in the Live environment by default.</p>
+
+
+
+<pre class="wp-block-code"><code>apt update &amp;&amp; apt install gdisk -y</code></pre>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Warning:</strong> These commands will erase all data on <kbd>$DISK</kbd>. Make sure you selected the correct disk.</p>
+</blockquote>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Wipe the disk and create a fresh GPT layout</mark>
+sgdisk -Z $DISK
+sgdisk -og $DISK
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create EFI system partition (1 GiB)</mark>
+sgdisk -n 1::+1G -t 1:ef00 -c 1:'ESP' $DISK
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create root partition (rest of the disk)</mark>
+sgdisk -n 2:: -t 2:8300 -c 2:'LINUX' $DISK
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Format the EFI partition with FAT32 filesystem</mark>
+mkfs.fat -F32 -n EFI ${DISK}1
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Format the main partition with Btrfs filesystem</mark>
+mkfs.btrfs -L DEBIAN ${DISK}2
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Verify the filesystem formats</mark>
+lsblk -po name,size,fstype,fsver,label,uuid $DISK</code></pre>
+
+
+
+<p>You should now see the filesystem layout something like this:</p>
+
+
+
+<pre class="wp-block-preformatted">NAME         SIZE FSTYPE FSVER LABEL  UUID<br>/dev/sda     128G                     <br>├─/dev/sda1    1G vfat   FAT32 EFI    3C4B-6CAA<br>└─/dev/sda2  127G btrfs        DEBIAN c499d0e9-f65b-418d-865d-defa9ff397aa</pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-3-create-essential-btrfs-subvolumes">Step 3: Create Essential Btrfs Subvolumes</h2>
+
+
+<p>We’ll now create the main Btrfs subvolumes that separate system files, user data, and temporary data. This layout ensures snapshots stay efficient and prevent rollback issues caused by temporary or volatile files.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount the Btrfs root</mark>
+mount -v ${DISK}2 /mnt
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create essential subvolumes</mark>
+btrfs subvolume create /mnt/@           <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Root filesystem</mark>
+btrfs subvolume create /mnt/@home       <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># User home data</mark>
+btrfs subvolume create /mnt/@opt        <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Optional software</mark>
+btrfs subvolume create /mnt/@cache      <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Cache data</mark>
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-highlight-1-color-color">btrfs subvolume create /mnt/@gdm3</mark>       <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Display manager data (GNOME)</mark>
+btrfs subvolume create /mnt/@libvirt    <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Virtual machines</mark>
+btrfs subvolume create /mnt/@log        <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Log files</mark>
+btrfs subvolume create /mnt/@spool      <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Spool data</mark>
+btrfs subvolume create /mnt/@tmp        <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Temporary files</mark>
+btrfs subvolume create /mnt/@swap       <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Swap file location</mark>
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Unmount when done</mark>
+umount -v /mnt</code></pre>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Note:</strong> Create the subvolume matching your display manager.<br>For GNOME use <kbd><strong>@gdm3</strong></kbd>, for KDE use <kbd><strong>@sddm</strong></kbd>, and for XFCE use <kbd><strong>@lightdm</strong></kbd>. Only one is required depending on your desktop environment.</p>
+</blockquote>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-4-mount-the-subvolumes-for-installation">Step 4: Mount the Subvolumes for Installation</h2>
+
+
+<p>Now that we have created all the Btrfs subvolumes, we need to mount them to their proper directories before installing Debian. This ensures that each subvolume is used for the right purpose during installation and that Snapper can manage snapshots correctly.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Define mount options for optimal Btrfs performance
+</mark>BTRFS_OPTS="defaults,noatime,space_cache=v2,compress=zstd:1"
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount the root subvolume</mark>
+mount -vo $BTRFS_OPTS,subvol=@ ${DISK}2 /mnt
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create directories for other subvolumes</mark>
+mkdir -vp /mnt/{home,opt,boot/efi,var/{cache,lib/{gdm3,libvirt},log,spool,tmp,swap}}
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount the remaining subvolumes</mark>
+mount -vo $BTRFS_OPTS,subvol=@home ${DISK}2 /mnt/home
+mount -vo $BTRFS_OPTS,subvol=@opt ${DISK}2 /mnt/opt
+mount -vo $BTRFS_OPTS,subvol=@cache ${DISK}2 /mnt/var/cache
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-highlight-1-color-color">mount -vo $BTRFS_OPTS,subvol=@gdm3 ${DISK}2 /mnt/var/lib/gdm3</mark>
+mount -vo $BTRFS_OPTS,subvol=@libvirt ${DISK}2 /mnt/var/lib/libvirt
+mount -vo $BTRFS_OPTS,subvol=@log ${DISK}2 /mnt/var/log
+mount -vo $BTRFS_OPTS,subvol=@spool ${DISK}2 /mnt/var/spool
+mount -vo $BTRFS_OPTS,subvol=@tmp ${DISK}2 /mnt/var/tmp
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount swap subvolume without compression or CoW for reliability</mark>
+mount -vo defaults,noatime,subvol=@swap ${DISK}2 /mnt/var/swap
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount the EFI partition</mark>
+mount -v ${DISK}1 /mnt/boot/efi
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Verify the mounts</mark>
+lsblk -po name,size,fstype,uuid,mountpoints $DISK</code></pre>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Desktop environments:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>For KDE, replace <code>@gdm3</code> with <code><strong>@sddm</strong></code> and mount to <code><strong>/mnt/var/lib/sddm</strong></code>.</li>
+
+
+
+<li>For XFCE, use <code><strong>@lightdm</strong></code> and mount to <code><strong>/mnt/var/lib/lightdm</strong></code>.</li>
+</ul>
+</blockquote>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Your <code>/mnt</code> directory should now reflect the proper Btrfs layout, with each subvolume mounted to its intended location and ready for Debian installation.</p>
+
+
+
+<pre class="wp-block-preformatted">NAME         SIZE FSTYPE UUID                                 MOUNTPOINTS<br>/dev/sda     128G                                             <br>├─/dev/sda1    1G vfat   3C4B-6CAA                            /mnt/boot/efi<br>└─/dev/sda2  127G btrfs  c499d0e9-f65b-418d-865d-defa9ff397aa /mnt/var/swap<br>                                                              /mnt/var/tmp<br>                                                              /mnt/var/spool<br>                                                              /mnt/var/log<br>                                                              /mnt/var/lib/libvirt<br>                                                              /mnt/var/lib/gdm3<br>                                                              /mnt/var/cache<br>                                                              /mnt/opt<br>                                                              /mnt/home<br>                                                              /mnt</pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-5-install-the-debian-13-base-system-with-debootstrap">Step 5: Install the Debian 13 Base System with debootstrap</h2>
+
+
+<p>Now that all Btrfs subvolumes are properly mounted, we’ll install the minimal Debian base system onto our mounted root directory using the <code>debootstrap</code> tool. This forms the foundation of your Debian installation before we <kbd>chroot</kbd> into it for further configuration.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install debootstrap if not already installed</mark>
+apt install -y debootstrap
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install base Debian 13 (Trixie) system into /mnt</mark>
+debootstrap --arch=amd64 trixie /mnt http://deb.debian.org/debian
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount necessary filesystems for chroot environment</mark>
+for dir in dev proc sys run; do
+    mount -v --rbind "/${dir}" "/mnt/${dir}"
+    mount -v --make-rslave "/mnt/${dir}"
+done
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Mount EFI variables (for UEFI systems)</mark>
+mount -v -t efivarfs efivarfs /mnt/sys/firmware/efi/efivars</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-6-configure-fstab">Step 6: Configure fstab</h2>
+
+
+<p>Next, we’ll create the <kbd>fstab</kbd> file, which defines how partitions and Btrfs subvolumes are mounted at boot. This ensures each subvolume mounts to the correct directory automatically after installation.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Get UUIDs for Btrfs and EFI partitions</mark>
+BTRFS_UUID=$(blkid -s UUID -o value ${DISK}2) ; echo $BTRFS_UUID
+EFI_UUID=$(blkid -s UUID -o value ${DISK}1) ; echo $EFI_UUID
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create /etc/fstab inside the target system</mark>
+cat &gt; /mnt/etc/fstab &lt;&lt; EOF
+UUID=$BTRFS_UUID /                btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@ 0 0
+UUID=$BTRFS_UUID /home            btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@home 0 0
+UUID=$BTRFS_UUID /opt             btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@opt 0 0
+UUID=$BTRFS_UUID /var/cache       btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@cache 0 0
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-highlight-1-color-color">UUID=$BTRFS_UUID /var/lib/gdm3    btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@gdm3 0 0</mark>
+UUID=$BTRFS_UUID /var/lib/libvirt btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@libvirt 0 0
+UUID=$BTRFS_UUID /var/log         btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@log 0 0
+UUID=$BTRFS_UUID /var/spool       btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@spool 0 0
+UUID=$BTRFS_UUID /var/tmp         btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@tmp 0 0
+UUID=$BTRFS_UUID /var/swap        btrfs defaults,noatime,subvol=@swap 0 0
+UUID=$EFI_UUID   /boot/efi        vfat  defaults,noatime 0 2
+EOF
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Verify the fstab file content</mark>
+cat /mnt/etc/fstab</code></pre>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<ul class="wp-block-list">
+<li>For KDE, replace <kbd><strong>/var/lib/gdm3</strong></kbd> and <code><strong>@gdm3</strong></code> with <code><strong>/var/lib/sddm</strong></code> and  <code><strong>@sddm</strong></code>.</li>
+
+
+
+<li>For XFCE, use <code><strong>/var/lib/lightdm</strong></code> and <code><strong>@lightdm</strong></code>.</li>
+</ul>
+</blockquote>
+
+
+
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>The <kbd>fstab</kbd> file should look similar to this, though the UUIDs will differ on your system.</p>
+
+
+
+<pre class="wp-block-preformatted">UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /                btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@ 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /home            btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@home 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /opt             btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@opt 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/cache       btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@cache 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/lib/gdm3    btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@gdm3 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/lib/libvirt btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@libvirt 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/log         btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@log 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/spool       btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@spool 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/tmp         btrfs defaults,noatime,space_cache=v2,compress=zstd:1,subvol=@tmp 0 0<br>UUID=c499d0e9-f65b-418d-865d-defa9ff397aa /var/swap        btrfs defaults,noatime,subvol=@swap 0 0<br>UUID=3C4B-6CAA   /boot/efi        vfat  defaults,noatime 0 2</pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-7-chroot-into-the-installed-system">Step 7: Chroot into the Installed System</h2>
+
+
+<p>Now that the <kbd>base</kbd> system and <kbd>fstab</kbd> are ready, we’ll enter the new Debian environment using <code>chroot</code>. This allows us to configure the system as if we had booted into it directly.</p>
+
+
+
+<pre class="wp-block-code"><code>chroot /mnt /bin/bash</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-8-configure-base-system-settings">Step 8: Configure Base System Settings</h2>
+
+
+<p>In this step, we’ll set the hostname, update the <code>hosts</code> file, configure the timezone, and generate locales for the system.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Note:</strong> The timezone is set to <code>America/New_York</code> (USA) and the locale to <code>en_US.UTF-8</code>. You should change these to match your location and preferred language when running the commands.</p>
+</blockquote>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Set the system hostname</mark>
+echo "debian" &gt; /etc/hostname
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Configure /etc/hosts</mark>
+cat &gt; /etc/hosts &lt;&lt; EOF
+127.0.0.1       localhost
+127.0.1.1       $(cat /etc/hostname)
+
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+EOF
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Set the timezone (adjust to your region)</mark>
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install and configure locales</mark>
+apt install -y locales
+dpkg-reconfigure locales</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-9-configure-repositories-and-install-base-packages">Step 9: Configure Repositories and Install Base Packages</h2>
+
+
+<p>Now that the system locale and timezone are set, we’ll configure APT sources for Debian 13 (Trixie) and install the kernel, firmware, GRUB, networking tools, and essential utilities.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Configure APT sources for Debian 13 (Trixie)</mark>
+cat &gt; /etc/apt/sources.list &lt;&lt; EOF
+deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+EOF
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Update package lists</mark>
+apt update
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install kernel, system tools, and essential utilities</mark>
+apt install -y linux-image-amd64 linux-headers-amd64 \
+    firmware-linux firmware-linux-nonfree \
+    grub-efi-amd64 efibootmgr network-manager \
+    btrfs-progs sudo vim bash-completion</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-10-create-swap-with-hibernation-support">Step 10: Create Swap with Hibernation Support</h2>
+
+
+<p>We’ll create a swap file on the Btrfs filesystem, disable compression for it, and configure the system so hibernation works correctly.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Note:</strong> Hibernation requires Secure Boot to be disabled in BIOS/UEFI settings. The Linux kernel blocks hibernation when Secure Boot is enabled for security reasons. To check: <code>mokutil --sb-state</code>. If you want to keep Secure Boot enabled, use <code>sudo systemctl suspend</code> instead.</p>
+</blockquote>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Prepare swap file</mark>
+truncate -s 0 /var/swap/swapfile
+chattr +C /var/swap/swapfile                     <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Disable COW</mark>
+btrfs property set /var/swap compression none    <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Disable compression</mark>
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># My system has 4 GB RAM, so I create 6 GB swap for hibernation (1.5× of RAM)</mark>
+dd if=/dev/zero of=/var/swap/swapfile bs=1M count=6144 status=progress
+chmod 600 /var/swap/swapfile
+mkswap -L SWAP /var/swap/swapfile
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Add swap to fstab and enable it</mark>
+echo "/var/swap/swapfile none swap defaults 0 0" &gt;&gt; /etc/fstab
+swapon /var/swap/swapfile
+swapon -v
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Configure GRUB for hibernation</mark>
+SWAP_OFFSET=$(btrfs inspect-internal map-swapfile -r /var/swap/swapfile)
+BTRFS_UUID=$(blkid -s UUID -o value ${DISK}2)
+GRUB_CMD="quiet resume=UUID=$BTRFS_UUID resume_offset=$SWAP_OFFSET"
+echo "GRUB_CMDLINE_LINUX_DEFAULT=\"$GRUB_CMD\"" &gt;&gt; /etc/default/grub
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Update GRUB configuration with new kernel parameters</mark>
+update-grub
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Configure initramfs for hibernation (using swap file)</mark>
+cat &gt; /etc/initramfs-tools/conf.d/resume &lt;&lt; EOF
+RESUME=/var/swap/swapfile
+RESUME_OFFSET=$SWAP_OFFSET
+EOF
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Update initramfs to include hibernation support  </mark>
+update-initramfs -u -k all
+</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-11-create-a-user">Step 11: Create a User</h2>
+
+
+<p>We’ll create a new user, add them to the <code>sudo</code> and <code>adm</code> groups, set their shell, and assign a password. Change the username and full name to match your preference.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create a new user (replace with your username and name)</mark>
+useradd -m -G sudo,adm -s /bin/bash -c "Madhu" madhu
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Set the user password</mark>
+passwd madhu
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Verify the user creation</mark>
+id madhu</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-12-install-and-configure-grub-bootloader">Step 12: Install and Configure GRUB Bootloader</h2>
+
+
+<p>We’ll install the GRUB bootloader for UEFI systems and generate its configuration so the system can boot correctly.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install GRUB for UEFI</mark>
+grub-install \
+  --target=x86_64-efi \
+  --efi-directory=/boot/efi \
+  --bootloader-id=debian \
+  --recheck
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Generate GRUB configuration</mark>
+update-grub</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-13-exit-chroot-and-reboot">Step 13: Exit Chroot and Reboot</h2>
+
+
+<p>Once all configurations are complete, exit the chroot environment, unmount the partitions, and reboot into your new Debian system.</p>
+
+
+
+<p>First, exit the chroot environment:</p>
+
+
+
+<pre class="wp-block-code"><code>exit</code></pre>
+
+
+
+<p>Once back in the live environment (or host shell), unmount the partitions and reboot:</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Unmount all mounted directories</mark>
+umount -vR /mnt
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Reboot into the installed system</mark>
+reboot</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-14-install-the-desktop-environment">Step 14: Install the Desktop Environment</h2>
+
+
+<p>After rebooting, your system will start from the newly installed Debian setup — a minimal command-line environment running independently, not inside the chroot.</p>
+
+
+
+<p>Log in with your user account and install your preferred desktop environment. Installing it on the running system is recommended, as it allows all services, drivers, and display components to initialize properly under systemd.</p>
+
+
+
+<p>For this guide, I will install <strong>GNOME</strong>, the default Debian desktop environment:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo apt install -y task-gnome-desktop</code></pre>
+
+
+
+<p>For KDE and XFCE, use the following commands instead:</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># For KDE Desktop</mark>
+sudo apt install -y task-kde-desktop
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># For XFCE Desktop</mark>
+sudo apt install -y task-xfce-desktop</code></pre>
+
+
+
+<p>Once the installation is complete, reboot the system:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo reboot</code></pre>
+
+
+
+<p>After reboot, you will be logged into Debian 13 with the GNOME 48 desktop environment.</p>
+
+
+
+<figure data-wp-context="{&quot;imageId&quot;:&quot;691ad649331bd&quot;}" data-wp-interactive="core/image" data-wp-key="691ad649331bd" class="wp-block-image size-large wp-lightbox-container"><img decoding="async" width="1366" height="706" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on--click="actions.showLightbox" data-wp-on--load="callbacks.setButtonStyles" data-wp-on-window--resize="callbacks.setButtonStyles" src="https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-1366x706.webp" alt="How to Install Debian 13 with Btrfs - GNOME 48" class="wp-image-11582" srcset="https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-1366x706.webp 1366w, https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-300x155.webp 300w, https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-150x78.webp 150w, https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-768x397.webp 768w, https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop-1536x794.webp 1536w, https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop.webp 1600w" sizes="(max-width: 1366px) 100vw, 1366px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button></figure>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-15-create-a-mozilla-subvolume-in-home">Step 15: Create a <kbd>.mozilla</kbd> Subvolume in Home</h2>
+
+
+<p>You might be wondering: <em>“We already have a <code>@home</code> subvolume. Why create another subvolume inside it?”</em></p>
+
+
+
+<p>Here’s why:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The <code>@home</code> subvolume protects your home directory from rollbacks of the root <code>@</code> subvolume, keeping personal files safe when restoring system snapshots.</li>
+
+
+
+<li>But what if you want to <strong>include <code>@home</code> in snapshots and undo changes</strong> — for example, when testing a new application? Most apps create configuration files throughout your home directory. When you undo changes, all these files are reverted — except you may want to keep some directories intact, like Firefox’s <code>.mozilla</code> with your bookmarks, passwords, and extensions.</li>
+
+
+
+<li>Creating a separate <code>.mozilla</code> subvolume ensures you can safely undo changes in <code>@home</code> while keeping important application data untouched. This creates a “water-tight” rollback: test apps freely, revert unwanted changes, and preserve critical personal data.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create a subvolume for .mozilla</mark>
+btrfs subvolume create ~/.mozilla
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Verify the subvolume has been created</mark>
+sudo btrfs subvolume list /</code></pre>
+
+
+
+<p>You should see output similar to this, showing the <kbd>.mozilla</kbd> subvolume nested inside <kbd>@home</kbd>:</p>
+
+
+
+<pre class="wp-block-preformatted">ID 256 gen 66 top level 5 path @<br>ID 257 gen 66 top level 5 path @home<br>ID 258 gen  9 top level 5 path @opt<br>ID 259 gen 66 top level 5 path @cache<br>ID 260 gen 66 top level 5 path @gdm3<br>ID 261 gen  9 top level 5 path @libvirt<br>ID 262 gen 66 top level 5 path @log<br>ID 263 gen 65 top level 5 path @spool<br>ID 264 gen 66 top level 5 path @tmp<br>ID 265 gen 30 top level 5 path @swap<br>ID 266 gen 67 top level 257 path @home/madhu/.mozilla</pre>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Note:</strong> I have only created <kbd>.mozilla</kbd> as an example. If you use a different browser or have other important directories (like project directories) inside your home subvolume, I recommend creating separate subvolumes for them in the same way to keep them safe from rollbacks.</p>
+</blockquote>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-16-install-and-configure-snapper">Step 16: Install and Configure Snapper</h2>
+
+
+<p>Snapper is a tool that manages Btrfs snapshots, allowing you to easily take snapshots, compare changes, and undo modifications. In this step, we’ll install Snapper, create configurations for both the root (<kbd>@</kbd>) and home (<kbd>@home</kbd>) subvolumes, and adjust settings for safe usage.</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install Snapper and required tools</mark>
+sudo apt install -y snapper btrfs-assistant inotify-tools git make
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Create Snapper config for root (@) and home (@home) subvolumes</mark>
+sudo snapper -c root create-config /
+sudo snapper -c home create-config /home
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Grant user access and synchronize ACLs</mark>
+sudo snapper -c root set-config ALLOW_USERS=$USER SYNC_ACL=yes
+sudo snapper -c home set-config ALLOW_USERS=$USER SYNC_ACL=yes
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># List available Snapper configs</mark>
+sudo snapper list-configs
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Show current settings for root and home</mark>
+snapper -c root get-config
+snapper -c home get-config
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># List snapshots for root and home</mark>
+snapper ls
+snapper -c home ls</code></pre>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Note:</strong> At this stage, you do not have any snapshots yet. Snapshots will be created later either manually or automatically when timeline or boot timers are active.</p>
+</blockquote>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-17-install-grubbtrfs">Step 17: Install GRUB-Btrfs</h2>
+
+
+<p>GRUB-Btrfs integrates your Btrfs snapshots with the GRUB bootloader. This allows you to boot directly into snapshots created by Snapper, making rollback easy and safe.</p>
+
+
+
+<p>Navigate to a temporary directory:</p>
+
+
+
+<pre class="wp-block-code"><code>cd /tmp</code></pre>
+
+
+
+<p>Install GRUB-Btrfs:</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Clone the GRUB-Btrfs repository from GitHub</mark>
+git clone https://github.com/Antynea/grub-btrfs.git
+cd grub-btrfs
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Edit the configuration to set kernel parameters for snapshots</mark>
+sed -i.bkp \
+  '/^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=/a \
+GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="rd.live.overlay.overlayfs=1"' \
+  config
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Install GRUB-Btrfs</mark>
+sudo make install
+
+<mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-custom-comment-color-color"># Enable and start the GRUB-Btrfs daemon to update
+# GRUB automatically when snapshots are created</mark>
+sudo systemctl enable --now grub-btrfsd.service</code></pre>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-18-enable-automatic-timeline-snapshots">Step 18: Enable Automatic Timeline Snapshots</h2>
+
+
+<p>Snapper can automatically create snapshots at key intervals: <strong>every system boot</strong>, <strong>every hour</strong>, and perform <strong>daily cleanup</strong> of old snapshots.</p>
+
+
+
+<p>By default, automatic snapshots for timelines, boot, and cleanup are already enabled.</p>
+
+
+
+<p>You can check their status with these commands:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo systemctl status snapper-boot.timer
+sudo systemctl status snapper-timeline.timer
+sudo systemctl status snapper-cleanup.timer</code></pre>
+
+
+
+<p>Here’s what each timer does:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>snapper-boot.timer</code></strong> – Automatically creates a snapshot of the root subvolume at every system boot, giving a safe rollback point if the system fails to start.</li>
+
+
+
+<li><strong><code>snapper-timeline.timer</code></strong> – By default, takes snapshots <strong>every hour</strong> for configured subvolumes, tracking changes over time.</li>
+
+
+
+<li><strong><code>snapper-cleanup.timer</code></strong> – By default, runs <strong>once per day</strong> to remove old snapshots according to Snapper’s retention policies, keeping disk usage under control.</li>
+</ul>
+
+
+
+<p>To customize the frequency, you can edit the timer files located in <code>/usr/lib/systemd/system/</code> or override them in <code>/etc/systemd/system/</code>. See the&nbsp;<a href="https://wiki.archlinux.org/title/Snapper#Automatic_timeline_snapshots" target="_blank" rel="noreferrer noopener">Snapper Arch Wiki</a>&nbsp;for examples.</p>
+
+
+
+<p>By default, timeline snapshots are enabled for both root (<kbd>@</kbd>) and home (<kbd>@home</kbd>) subvolumes. However, it is recommended to <strong>keep timeline snapshots enabled only for root</strong> and disable them for home to avoid excessive snapshot clutter:</p>
+
+
+
+<pre class="wp-block-code"><code>sudo snapper -c home set-config TIMELINE_CREATE=no</code></pre>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Why disable timeline snapshots for home?</strong><br>Home directories often contain large amounts of personal files and frequently changing data. Enabling automatic timeline snapshots for home can quickly create hundreds of snapshots, using up disk space and making snapshot management cumbersome. Disabling it for home keeps snapshots focused on the system (<kbd>@</kbd>), while still allowing manual snapshots for important home directories when needed.</p>
+</blockquote>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="step-19-test-your-snapshot-and-rollback-setup">Step 19: Test Your Snapshot and Rollback Setup</h2>
+
+
+<p>Now that everything is configured, it’s time to verify that your snapshot and rollback system works correctly. These tests were originally performed on Fedora 40, but they apply to Debian as well. Simply use <code>apt</code> instead of <code>dnf</code>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>Tip:</strong> If you are running Debian in a virtual machine, it is highly recommended to perform these tests first. This helps you build confidence in your snapshot system before relying on it for important work.</p>
+</blockquote>
+
+
+
+<p>Here are some safe and practical tests you can try:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#7-test-1-undo-the-changes-made-by-the-dnf-installer-" target="_blank" rel="noreferrer noopener">Test 1: Undo the Changes Made by the DNF Installer</a>. Learn how to revert all changes made when installing or removing packages. This is perfect for cleaning up after testing new software.</li>
+
+
+
+<li><a href="https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#8-test-2-undo-any-changes-made-to-individual-files" target="_blank" rel="noreferrer noopener">Test 2: Undo Any Changes Made to Individual Files</a>. Practice reverting changes to individual system files. This is useful when a configuration edit breaks something.</li>
+
+
+
+<li><a href="https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#9-test-3-create-manual-pre-post-snapshots-and-undo-the-changes" target="_blank" rel="noreferrer noopener">Test 3: Create Manual Pre-Post Snapshots and Undo the Changes</a>. Create manual pre and post snapshots before making risky changes, then roll back safely. This forms the foundation of fearless system experimentation.</li>
+
+
+
+<li><a href="https://sysguides.com/install-fedora-42-with-snapshot-and-rollback-support#7-rollback-using-btrfs-assistant-gui" target="_blank" rel="noreferrer noopener">Test 4: Rollback Using Btrfs Assistant GUI</a>. Use the graphical Btrfs Assistant tool to browse snapshots and perform rollbacks without command-line complexity.</li>
+</ul>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="conclusion">Conclusion</h2>
+
+
+<p>That’s it – this concludes the step-by-step tutorial for installing Debian 13 with a Btrfs filesystem, Snapper snapshots, and GRUB-Btrfs integration. You now have a resilient system with:</p>
+
+
+
+<ul class="wp-block-list">
+<li>A fully functional Debian 13 installation</li>
+
+
+
+<li>Btrfs subvolumes optimized for snapshots and rollbacks</li>
+
+
+
+<li>Snapper configured for safe system and home snapshots</li>
+
+
+
+<li>GRUB-Btrfs integration for booting into snapshots</li>
+
+
+
+<li>Timeline and boot snapshots configured for convenience and safety</li>
+</ul>
+
+
+
+<p>With this setup, you can experiment, test applications, and update your system confidently, knowing you can always roll back to a previous state without losing important data. Your home directories, including critical application data like Firefox profiles, remain safe even during system rollbacks.</p>
+
+
+
+<p>You now have a robust Debian 13 system with Btrfs snapshots and rollback support, perfect for safe updates and easy recovery.</p>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h2 class="wp-block-heading" id="watch-on-youtube">Watch on YouTube</h2>
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Debian 13 &quot;Time Machine&quot; Setup — BTRFS Rollback Made Easy" width="500" height="281" src="https://www.youtube.com/embed/WFn40I8knmQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+</div>
+
+<div style="padding-top:var(--wp--preset--spacing--50);padding-right:0;padding-bottom:var(--wp--preset--spacing--30)" class="taxonomy-post_tag is-style-post-terms-1 is-style-post-terms-1--2 wp-block-post-terms"><a href="https://sysguides.com/tag/btrfs" rel="tag">BtrFS</a><span class="wp-block-post-terms__separator">  </span><a href="https://sysguides.com/tag/debian" rel="tag">Debian</a><span class="wp-block-post-terms__separator">  </span><a href="https://sysguides.com/tag/rollback" rel="tag">Rollback</a><span class="wp-block-post-terms__separator">  </span><a href="https://sysguides.com/tag/snapshot" rel="tag">Snapshot</a></div>
+
+
+<nav class="wp-block-group alignwide is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-9b36172e wp-block-group-is-layout-flex" aria-label="Post navigation" style="border-top-color:var(--wp--preset--color--accent-6);border-top-width:1px;padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><div class="post-navigation-link-previous wp-block-post-navigation-link"><span class="wp-block-post-navigation-link__arrow-previous is-arrow-arrow" aria-hidden="true">←</span><a href="https://sysguides.com/dns-on-linux" rel="prev">DNS on Linux: The Secret to Faster, Safer Browsing</a></div>
+
+<div class="post-navigation-link-next wp-block-post-navigation-link"></div></nav>
+
+
+<div style="margin-top:0;margin-bottom:0;" class="wp-block-comments-query-loop wp-block-comments"><div>    <div class="wpdiscuz_top_clearing"></div>
+    <div id='comments' class='comments-area'><div id='respond' style='width: 0;height: 0;clear: both;margin: 0;padding: 0;'></div>    <div id="wpdcom" class="wpdiscuz_unauth wpd-default wpd-layout-1 wpd-comments-open">
+                    <div class="wc_social_plugin_wrapper">
+                            </div>
+            <div class="wpd-form-wrap">
+                <div class="wpd-form-head">
+                                        <div class="wpd-auth">
+                                                <div class="wpd-login">
+                                                    </div>
+                    </div>
+                </div>
+                                        <div
+            class="wpd-form wpd-form-wrapper wpd-main-form-wrapper" id='wpd-main-form-wrapper-0_0'>
+                                        <form  method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd_main_comm_form"                >
+                                        <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+                                                                                                        <div class="wpd-avatar">
+                                        <img alt='guest' src='https://secure.gravatar.com/avatar/ce4896b0c4667d94afba967af20da2897637920db24423d8f32d87c9a1d7ecbb?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/ce4896b0c4667d94afba967af20da2897637920db24423d8f32d87c9a1d7ecbb?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' loading='lazy' decoding='async'/>                                    </div>
+                                                <div id="wpd-editor-wraper-0_0" style="display: none;">
+                <div id="wpd-editor-char-counter-0_0"
+                     class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-0_0">Label</label>
+                <textarea id="wc-textarea-0_0" name="wc_comment"
+                          class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-0_0"></div>
+                        <div id="wpd-editor-toolbar-0_0">
+                            <button title="Bold"
+                        class="ql-bold"  ></button>
+                                <button title="Italic"
+                        class="ql-italic"  ></button>
+                                <button title="Underline"
+                        class="ql-underline"  ></button>
+                                <button title="Strike"
+                        class="ql-strike"  ></button>
+                                <button title="Ordered List"
+                        class="ql-list" value='ordered' ></button>
+                                <button title="Unordered List"
+                        class="ql-list" value='bullet' ></button>
+                                <button title="Blockquote"
+                        class="ql-blockquote"  ></button>
+                                <button title="Code Block"
+                        class="ql-code-block"  ></button>
+                                <button title="Link"
+                        class="ql-link"  ></button>
+                                <button title="Source Code"
+                        class="ql-sourcecode"  data-wpde_button_name='sourcecode'>{}</button>
+                            <div class="wpd-editor-buttons-right">
+                            </div>
+        </div>
+                    </div>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style='display:none;'>
+                        <div class="wpdiscuz-textarea-foot">
+                                                        <div class="wpdiscuz-button-actions"></div>
+                        </div>
+                                <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-user"></i>
+                    </div>
+                                    <input id="wc_name-0_0" value="" required='required' aria-required='true'                       class="wc_name wpd-field" type="text"
+                       name="wc_name"
+                       placeholder="Name*"
+                       maxlength="50" pattern='.{3,50}'                       title="">
+                <label for="wc_name-0_0"
+                       class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-at"></i>
+                    </div>
+                                    <input id="wc_email-0_0" value="" required='required' aria-required='true'                       class="wc_email wpd-field" type="email"
+                       name="wc_email"
+                       placeholder="Email*"/>
+                <label for="wc_email-0_0"
+                       class="wpdlb">Email*</label>
+                            </div>
+                            <div class="wpdiscuz-item wc_website-wrapper wpd-has-icon">
+                                            <div class="wpd-field-icon"><i
+                                class="fas fa-link"></i>
+                        </div>
+                                        <input id="wc_website-0_0" value=""
+                           class="wc_website wpd-field" type="text"
+                           name="wc_website"
+                           placeholder="Website"/>
+                    <label for="wc_website-0_0"
+                           class="wpdlb">Website</label>
+                                    </div>
+                        </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+                                                <label class="wpd_label"
+                           wpd-tooltip="Notify of new replies to this comment">
+                        <input id="wc_notification_new_comment-0_0"
+                               class="wc_notification_new_comment-0_0 wpd_label__checkbox"
+                               value="comment" type="checkbox"
+                               name="wpdiscuz_notification_type" />
+                        <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                    </label>
+                            <input id="wpd-field-submit-0_0"
+                   class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit"
+                   name="submit" value="Post Comment"
+                   aria-label="Post Comment"/>
+        </div>
+                </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+                                        <input type="hidden" class="wpdiscuz_unique_id" value="0_0"
+                           name="wpdiscuz_unique_id">
+                                    </form>
+                        </div>
+                <div id="wpdiscuz_hidden_secondary_form" style="display: none;">
+                    <div
+            class="wpd-form wpd-form-wrapper wpd-secondary-form-wrapper" id='wpd-secondary-form-wrapper-wpdiscuzuniqueid' style='display: none;'>
+                            <div class="wpd-secondary-forms-social-content"></div>
+                <div class="clearfix"></div>
+                                        <form  method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd-secondary-form-wrapper"                >
+                                        <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+                                                                                                        <div class="wpd-avatar">
+                                        <img alt='guest' src='https://secure.gravatar.com/avatar/a88ad9ce44daf019da5fc8f461c7b011398f18f761f8a85d5f2f5677747930e4?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a88ad9ce44daf019da5fc8f461c7b011398f18f761f8a85d5f2f5677747930e4?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' loading='lazy' decoding='async'/>                                    </div>
+                                                <div id="wpd-editor-wraper-wpdiscuzuniqueid" style="display: none;">
+                <div id="wpd-editor-char-counter-wpdiscuzuniqueid"
+                     class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-wpdiscuzuniqueid">Label</label>
+                <textarea id="wc-textarea-wpdiscuzuniqueid" name="wc_comment"
+                          class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-wpdiscuzuniqueid"></div>
+                        <div id="wpd-editor-toolbar-wpdiscuzuniqueid">
+                            <button title="Bold"
+                        class="ql-bold"  ></button>
+                                <button title="Italic"
+                        class="ql-italic"  ></button>
+                                <button title="Underline"
+                        class="ql-underline"  ></button>
+                                <button title="Strike"
+                        class="ql-strike"  ></button>
+                                <button title="Ordered List"
+                        class="ql-list" value='ordered' ></button>
+                                <button title="Unordered List"
+                        class="ql-list" value='bullet' ></button>
+                                <button title="Blockquote"
+                        class="ql-blockquote"  ></button>
+                                <button title="Code Block"
+                        class="ql-code-block"  ></button>
+                                <button title="Link"
+                        class="ql-link"  ></button>
+                                <button title="Source Code"
+                        class="ql-sourcecode"  data-wpde_button_name='sourcecode'>{}</button>
+                            <div class="wpd-editor-buttons-right">
+                            </div>
+        </div>
+                    </div>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style='display:none;'>
+                        <div class="wpdiscuz-textarea-foot">
+                                                        <div class="wpdiscuz-button-actions"></div>
+                        </div>
+                                <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-user"></i>
+                    </div>
+                                    <input id="wc_name-wpdiscuzuniqueid" value="" required='required' aria-required='true'                       class="wc_name wpd-field" type="text"
+                       name="wc_name"
+                       placeholder="Name*"
+                       maxlength="50" pattern='.{3,50}'                       title="">
+                <label for="wc_name-wpdiscuzuniqueid"
+                       class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-at"></i>
+                    </div>
+                                    <input id="wc_email-wpdiscuzuniqueid" value="" required='required' aria-required='true'                       class="wc_email wpd-field" type="email"
+                       name="wc_email"
+                       placeholder="Email*"/>
+                <label for="wc_email-wpdiscuzuniqueid"
+                       class="wpdlb">Email*</label>
+                            </div>
+                            <div class="wpdiscuz-item wc_website-wrapper wpd-has-icon">
+                                            <div class="wpd-field-icon"><i
+                                class="fas fa-link"></i>
+                        </div>
+                                        <input id="wc_website-wpdiscuzuniqueid" value=""
+                           class="wc_website wpd-field" type="text"
+                           name="wc_website"
+                           placeholder="Website"/>
+                    <label for="wc_website-wpdiscuzuniqueid"
+                           class="wpdlb">Website</label>
+                                    </div>
+                        </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+                                                <label class="wpd_label"
+                           wpd-tooltip="Notify of new replies to this comment">
+                        <input id="wc_notification_new_comment-wpdiscuzuniqueid"
+                               class="wc_notification_new_comment-wpdiscuzuniqueid wpd_label__checkbox"
+                               value="comment" type="checkbox"
+                               name="wpdiscuz_notification_type" />
+                        <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                    </label>
+                            <input id="wpd-field-submit-wpdiscuzuniqueid"
+                   class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit"
+                   name="submit" value="Post Comment"
+                   aria-label="Post Comment"/>
+        </div>
+                </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+                                        <input type="hidden" class="wpdiscuz_unique_id" value="wpdiscuzuniqueid"
+                           name="wpdiscuz_unique_id">
+                                    </form>
+                        </div>
+                </div>
+                    </div>
+                        <div id="wpd-threads" class="wpd-thread-wrapper">
+                <div class="wpd-thread-head">
+                    <div class="wpd-thread-info "
+                         data-comments-count="10">
+                        <span class='wpdtc' title='10'>10</span> Comments                    </div>
+                                        <div class="wpd-space"></div>
+                    <div class="wpd-thread-filter">
+                                                    <div class="wpd-filter wpdf-sorting ">
+                                                                        <span class="wpdiscuz-sort-button wpdiscuz-date-sort-desc wpdiscuz-sort-button-active"
+                                              data-sorting="newest">Newest</span>
+                                                                        <i class="fas fa-sort-down"></i>
+                                <div class="wpdiscuz-sort-buttons">
+                                                                            <span class="wpdiscuz-sort-button wpdiscuz-date-sort-asc"
+                                              data-sorting="oldest">Oldest</span>
+                                                                        </div>
+                            </div>
+                                                </div>
+                </div>
+                <div class="wpd-comment-info-bar">
+                    <div class="wpd-current-view"><i
+                            class="fas fa-quote-left"></i> Inline Feedbacks                    </div>
+                    <div class="wpd-filter-view-all">View all comments</div>
+                </div>
+                                <div class="wpd-thread-list">
+                                        <div class="wpdiscuz-comment-pagination" style='display:none;'>
+                                                    <div class="wpd-load-more-submit-wrap">
+                                <button name="submit" data-lastparentid="0"
+                                        class="wpd-load-more-submit wpd-loaded wpd-prim-button">
+                                    Load More Comments                                </button>
+                            </div>
+                            <span id="wpdiscuzHasMoreComments" data-is_show_load_more="0"></span>
+                                                </div>
+                </div>
+            </div>
+                </div>
+        </div>
+    <div id="wpdiscuz-loading-bar"
+         class="wpdiscuz-loading-bar-unauth"></div>
+    <div id="wpdiscuz-comment-message"
+         class="wpdiscuz-comment-message-unauth"></div>
+    </div></div></div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:26%">
+<h3 class="wp-block-heading">Popular This Week</h3>
+
+
+<div class="popular-posts"><script type="application/json" data-id="wpp-block-inline-js">{"title":"","limit":"5","offset":0,"range":"last7days","time_quantity":"24","time_unit":"hour","freshness":false,"order_by":"views","post_type":"post","pid":"","exclude":"","taxonomy":"category","term_id":"","author":"","shorten_title":{"active":false,"length":"25","words":false},"post-excerpt":{"active":false,"length":"75","keep_format":false,"words":false},"thumbnail":{"active":true,"width":"138","height":"78","build":"manual","size":""},"rating":false,"stats_tag":{"comment_count":false,"views":false,"author":false,"date":{"active":false,"format":"F j, Y"},"taxonomy":{"active":false,"name":"category"}},"markup":{"custom_html":true,"wpp-start":"<ul class=\"wpp-list wpp-cards-compact\">","wpp-end":"<\/ul>","title-start":"<h4>","title-end":"<\/h4>","post-html":"<li class=\"{current_class}\">{thumb_img}<div class=\"wpp-item-data\"><div class=\"taxonomies\">{taxonomy}<\/div>{title}<\/div><\/li>"},"theme":{"name":"cards-compact"}}</script><div class="wpp-widget-block-placeholder"></div></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50)"/>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:0">
+<h3 class="wp-block-heading">Like this Blog?</h3>
+
+
+
+<div class="wp-block-group is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-ce155fab wp-block-group-is-layout-flex">
+<figure class="wp-block-image size-full is-resized sysguides-coffee-logo"><img src="https://sysguides.com/wp-content/uploads/2021/10/SysGuides-Logo-400_88.svg" alt="SysGuides Brand Logo Big" class="wp-image-12" style="width:140px"/></figure>
+
+
+
+<p style="font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.098), 15px);line-height:1.5">Readers like YOU are the reason I keep sharing Linux knowledge. If my tutorials made your day easier, consider fueling more with a coffee!</p>
+
+
+
+<a href="https://www.buymeacoffee.com/sysguides" target="_blank" rel="noopener" class="sysguides-coffee-btn">
+                <img src="https://sysguides.com/wp-content/themes/twentytwentyfive-child/images/bmc-logo.png" alt="Buy Me a Coffee" class="bmc-logo">
+                Buy Me a Coffee
+            </a>
+</div>
+</div>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50)"/>
+</div>
+</div>
+
+
+
+<div class="wp-block-group alignwide has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<h2 class="wp-block-heading alignwide has-small-font-size" style="font-style:normal;font-weight:700;letter-spacing:1.4px;text-transform:uppercase">More posts</h2>
+
+
+
+<div class="wp-block-query alignwide is-layout-flow wp-block-query-is-layout-flow"><ul class="alignfull wp-block-post-template is-layout-flow wp-container-core-post-template-is-layout-3ee800f6 wp-block-post-template-is-layout-flow"><li class="wp-block-post post-11579 post type-post status-publish format-standard has-post-thumbnail hentry category-distro category-storage tag-btrfs tag-debian tag-rollback tag-snapshot">
+
+<div class="wp-block-group alignfull is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-154222c2 wp-block-group-is-layout-flex" style="border-bottom-color:var(--wp--preset--color--accent-6);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><h3 class="wp-block-post-title has-large-font-size"><a href="https://sysguides.com/install-debian-13-with-btrfs" target="_self" >How to Install Debian 13 with Btrfs Snapshots and Rollback for a Resilient Linux System</a></h3>
+
+<div class="has-text-align-right wp-block-post-date"><time datetime="2025-10-10T09:25:04+05:30"><a href="https://sysguides.com/install-debian-13-with-btrfs">October 10, 2025</a></time></div></div>
+
+</li><li class="wp-block-post post-11294 post type-post status-publish format-standard has-post-thumbnail hentry category-security tag-arch tag-cli tag-fedora tag-ubuntu">
+
+<div class="wp-block-group alignfull is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-154222c2 wp-block-group-is-layout-flex" style="border-bottom-color:var(--wp--preset--color--accent-6);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><h3 class="wp-block-post-title has-large-font-size"><a href="https://sysguides.com/dns-on-linux" target="_self" >DNS on Linux: The Secret to Faster, Safer Browsing</a></h3>
+
+<div class="has-text-align-right wp-block-post-date"><time datetime="2025-07-12T14:18:54+05:30"><a href="https://sysguides.com/dns-on-linux">July 12, 2025</a></time></div></div>
+
+</li><li class="wp-block-post post-10937 post type-post status-publish format-standard has-post-thumbnail hentry category-distro category-security category-storage tag-btrfs tag-fedora tag-luks tag-rollback tag-snapshot">
+
+<div class="wp-block-group alignfull is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-154222c2 wp-block-group-is-layout-flex" style="border-bottom-color:var(--wp--preset--color--accent-6);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><h3 class="wp-block-post-title has-large-font-size"><a href="https://sysguides.com/install-fedora-42-with-full-disk-encryption-snapshot-and-rollback-support" target="_self" >How to Install Fedora 42 with Full Disk Encryption, Snapshot, and Rollback Support</a></h3>
+
+<div class="has-text-align-right wp-block-post-date"><time datetime="2025-04-23T02:04:56+05:30"><a href="https://sysguides.com/install-fedora-42-with-full-disk-encryption-snapshot-and-rollback-support">April 23, 2025</a></time></div></div>
+
+</li><li class="wp-block-post post-10784 post type-post status-publish format-standard has-post-thumbnail hentry category-distro category-storage tag-btrfs tag-fedora tag-rollback tag-snapshot">
+
+<div class="wp-block-group alignfull is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-154222c2 wp-block-group-is-layout-flex" style="border-bottom-color:var(--wp--preset--color--accent-6);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><h3 class="wp-block-post-title has-large-font-size"><a href="https://sysguides.com/install-fedora-42-with-snapshot-and-rollback-support" target="_self" >How to Install Fedora 42 with Snapshot and Rollback Support</a></h3>
+
+<div class="has-text-align-right wp-block-post-date"><time datetime="2025-04-22T02:15:34+05:30"><a href="https://sysguides.com/install-fedora-42-with-snapshot-and-rollback-support">April 22, 2025</a></time></div></div>
+
+</li></ul></div>
+</div>
+</main>
+
+
+<footer class="wp-block-template-part">
+<div class="wp-block-group has-accent-3-background-color has-background is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-e25567f2 wp-block-group-is-layout-flex" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p style="font-size:14px">Copyright © 2025 SysGuides</p>
+
+
+<nav style="font-size:14px;" class="items-justified-space-between wp-block-navigation is-content-justification-space-between is-layout-flex wp-container-core-navigation-is-layout-b2891da8 wp-block-navigation-is-layout-flex" aria-label="Footer navigation"><ul style="font-size:14px;" class="wp-block-navigation__container items-justified-space-between wp-block-navigation"><li style="font-size: 14px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/contact-me/"><span class="wp-block-navigation-item__label">Contact Me</span></a></li><li style="font-size: 14px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/privacy-policy/"><span class="wp-block-navigation-item__label">Privacy Policy</span></a></li><li style="font-size: 14px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://sysguides.com/terms-of-service/"><span class="wp-block-navigation-item__label">Terms of Service</span></a></li></ul></nav></div>
+</footer></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/twentytwentyfive-child\/*","\/wp-content\/themes\/twentytwentyfive\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchToggle = document.getElementById('search-toggle');
+  const searchForm = document.getElementById('search-form');
+  const headerSearch = document.querySelector('.header-search');
+  const searchInput = searchForm.querySelector('input[type="search"]');
+  const searchClear = document.getElementById('search-clear');
+
+  let isSearchActive = false;
+
+  // Toggle clear button visibility
+  function toggleClearButton() {
+    const hasValue = searchInput.value.trim() !== '';
+    const isActive = headerSearch.classList.contains('active');
+
+    if (hasValue && isActive) {
+      searchClear.classList.add('visible');
+    } else {
+      searchClear.classList.remove('visible');
+    }
+  }
+
+  // Open/close search
+  function toggleSearch() {
+    if (isSearchActive) {
+      // If search is open and has text, submit the form
+      const query = searchInput.value.trim();
+      if (query) {
+        searchForm.submit();
+        return;
+      }
+      // Otherwise close the search
+      closeSearch();
+    } else {
+      // Open search
+      isSearchActive = true;
+      headerSearch.classList.add('active');
+      setTimeout(() => {
+        searchInput.focus();
+        toggleClearButton();
+      }, 100);
+    }
+  }
+
+  // Close search
+  function closeSearch() {
+    if (isSearchActive) {
+      isSearchActive = false;
+      headerSearch.classList.remove('active');
+      searchInput.blur();
+      searchClear.classList.remove('visible');
+    }
+  }
+
+  // Clear search input
+  function clearSearch() {
+    searchInput.value = '';
+    searchInput.focus();
+    toggleClearButton();
+  }
+
+  // Event listeners
+  searchToggle.addEventListener('click', toggleSearch);
+
+  searchInput.addEventListener('input', toggleClearButton);
+
+  searchClear.addEventListener('click', clearSearch);
+
+  // Keyboard accessibility
+  searchClear.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      clearSearch();
+    }
+  });
+
+  // Handle form submission
+  searchForm.addEventListener('submit', function(e) {
+    const query = searchInput.value.trim();
+    if (!query) {
+      e.preventDefault();
+      return;
+    }
+    closeSearch();
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!headerSearch.contains(e.target) && isSearchActive) {
+      closeSearch();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isSearchActive) {
+      closeSearch();
+    }
+  });
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      if (isSearchActive) {
+        toggleClearButton();
+      }
+    }, 150);
+  });
+});
+</script>
+<script type="application/json" id="wp-script-module-data-@wordpress/interactivity">
+{"state":{"core/image":{"metadata":{"691ad649331bd":{"uploadedSrc":"https://sysguides.com/wp-content/uploads/2025/10/install-debian-13-with-btrfs-rollback-gnome-desktop.webp","figureClassNames":"wp-block-image size-large","figureStyles":null,"imgClassNames":"wp-image-11582","imgStyles":null,"targetWidth":1600,"targetHeight":827,"scaleAttr":false,"ariaLabel":"Enlarged image","alt":"How to Install Debian 13 with Btrfs - GNOME 48"}}}}}
+</script>
+<div id='wpd-editor-source-code-wrapper-bg'></div><div id='wpd-editor-source-code-wrapper'><textarea id='wpd-editor-source-code'></textarea><button id='wpd-insert-source-code'>Insert</button><input type='hidden' id='wpd-editor-uid' /></div>
+<!-- Sign in with Google button added by Site Kit -->
+		<style>
+		.googlesitekit-sign-in-with-google__frontend-output-button{max-width:320px}
+		</style>
+		<script src="https://accounts.google.com/gsi/client"></script>
+<script>
+(()=>{async function handleCredentialResponse(response){try{const res=await fetch('https://sysguides.com/wp-login.php?action=googlesitekit_auth',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(response)});/* Preserve comment text in case of redirect after login on a page with a Sign in with Google button in the WordPress comments. */ const commentText=document.querySelector('#comment')?.value;const postId=document.querySelectorAll('.googlesitekit-sign-in-with-google__comments-form-button')?.[0]?.className?.match(/googlesitekit-sign-in-with-google__comments-form-button-postid-(\d+)/)?.[1];if(!! commentText?.length){sessionStorage.setItem(`siwg-comment-text-${postId}`,commentText);}location.reload();}catch(error){console.error(error);}}if(typeof google !=='undefined'){google.accounts.id.initialize({client_id:'SysGuides',callback:handleCredentialResponse,library_name:'Site-Kit'});}const defaultButtonOptions={"theme":"outline","text":"signin_with","shape":"rectangular"};document.querySelectorAll('.googlesitekit-sign-in-with-google__frontend-output-button').forEach((siwgButtonDiv)=>{const buttonOptions={shape:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-shape')|| defaultButtonOptions.shape,text:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-text')|| defaultButtonOptions.text,theme:siwgButtonDiv.getAttribute('data-googlesitekit-siwg-theme')|| defaultButtonOptions.theme,};if(typeof google !=='undefined'){google.accounts.id.renderButton(siwgButtonDiv,buttonOptions);}});/* If there is a matching saved comment text in sessionStorage,restore it to the comment field and remove it from sessionStorage. */ const postId=document.body.className.match(/postid-(\d+)/)?.[1];const commentField=document.querySelector('#comment');const commentText=sessionStorage.getItem(`siwg-comment-text-${postId}`);if(commentText?.length && commentField && !! postId){commentField.value=commentText;sessionStorage.removeItem(`siwg-comment-text-${postId}`);}})();
+</script>
+
+<!-- End Sign in with Google button added by Site Kit -->
+		<div
+			class="wp-lightbox-overlay zoom"
+			data-wp-interactive="core/image"
+			data-wp-router-region='{ "id": "core/image-overlay", "attachTo": "body" }'
+			data-wp-key="wp-lightbox-overlay"
+			data-wp-context='{}'
+			data-wp-bind--role="state.roleAttribute"
+			data-wp-bind--aria-label="state.currentImage.ariaLabel"
+			data-wp-bind--aria-modal="state.ariaModal"
+			data-wp-class--active="state.overlayEnabled"
+			data-wp-class--show-closing-animation="state.overlayOpened"
+			data-wp-watch="callbacks.setOverlayFocus"
+			data-wp-on--keydown="actions.handleKeydown"
+			data-wp-on--touchstart="actions.handleTouchStart"
+			data-wp-on--touchmove="actions.handleTouchMove"
+			data-wp-on--touchend="actions.handleTouchEnd"
+			data-wp-on--click="actions.hideLightbox"
+			data-wp-on-window--resize="callbacks.setOverlayStyles"
+			data-wp-on-window--scroll="actions.handleScroll"
+			data-wp-bind--style="state.overlayStyles"
+			tabindex="-1"
+			>
+				<button type="button" aria-label="Close" style="fill: #000000" class="close-button">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg>
+				</button>
+				<div class="lightbox-image-container">
+					<figure data-wp-bind--class="state.currentImage.figureClassNames" data-wp-bind--style="state.figureStyles">
+						<img data-wp-bind--alt="state.currentImage.alt" data-wp-bind--class="state.currentImage.imgClassNames" data-wp-bind--style="state.imgStyles" data-wp-bind--src="state.currentImage.currentSrc">
+					</figure>
+				</div>
+				<div class="lightbox-image-container">
+					<figure data-wp-bind--class="state.currentImage.figureClassNames" data-wp-bind--style="state.figureStyles">
+						<img data-wp-bind--alt="state.currentImage.alt" data-wp-bind--class="state.currentImage.imgClassNames" data-wp-bind--style="state.imgStyles" data-wp-bind--src="state.enlargedSrc">
+					</figure>
+				</div>
+				<div class="scrim" style="background-color: var(--wp--preset--color--base)" aria-hidden="true"></div>
+		</div><script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+</script>
+<script id="wpfront-scroll-top-js-extra">
+var wpfront_scroll_top_data = {"data":{"css":"#wpfront-scroll-top-container{position:fixed;cursor:pointer;z-index:9999;border:none;outline:none;background-color:rgba(0,0,0,0);box-shadow:none;outline-style:none;text-decoration:none;opacity:0;display:none;align-items:center;justify-content:center;margin:0;padding:0}#wpfront-scroll-top-container.show{display:flex;opacity:1}#wpfront-scroll-top-container .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#wpfront-scroll-top-container .text-holder{padding:3px 10px;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);-moz-box-shadow:4px 4px 5px 0px rgba(50,50,50,.5);box-shadow:4px 4px 5px 0px rgba(50,50,50,.5)}#wpfront-scroll-top-container{right:20px;bottom:20px;}#wpfront-scroll-top-container img{width:45px;height:45px;}#wpfront-scroll-top-container .text-holder{color:#ffffff;background-color:#000000;width:45px;height:45px;line-height:45px;}#wpfront-scroll-top-container .text-holder:hover{background-color:#000000;}#wpfront-scroll-top-container i{color:#000000;}","html":"<button id=\"wpfront-scroll-top-container\" aria-label=\"\" title=\"\" ><img src=\"https:\/\/sysguides.com\/wp-content\/plugins\/wpfront-scroll-top\/includes\/assets\/icons\/1.png\" alt=\"\" title=\"\"><\/button>","data":{"hide_iframe":false,"button_fade_duration":0,"auto_hide":false,"auto_hide_after":2,"scroll_offset":300,"button_opacity":0.6,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0,"scroll_duration":400}}};
+</script>
+<script src="https://sysguides.com/wp-content/plugins/wpfront-scroll-top/includes/assets/wpfront-scroll-top.min.js?ver=3.0.1.09211" id="wpfront-scroll-top-js"></script>
+<script id="wpdiscuz-combo-js-js-extra">
+var wpdiscuzAjaxObj = {"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_banned_user":"You are banned","wc_comment_edit_not_possible":"Sorry, this comment is no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","wc_spoiler_title":"Spoiler Title","wc_cannot_rate_again":"You cannot rate again","wc_not_allowed_to_rate":"You're not allowed to rate here","wc_confirm_rate_edit":"Are you sure you want to edit your rate?","wc_follow_user":"Follow this user","wc_unfollow_user":"Unfollow this user","wc_follow_success":"You started following this comment author","wc_follow_canceled":"You stopped following this comment author.","wc_follow_email_confirm":"Please check your email and confirm the user following request.","wc_follow_email_confirm_fail":"Sorry, we couldn't send confirmation email.","wc_follow_login_to_follow":"Please login to follow users.","wc_follow_impossible":"We are sorry, but you can't follow this user.","wc_follow_not_added":"Following failed. Please try again later.","is_user_logged_in":"","commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"60","liveUpdateGuests":"0","wordpressThreadCommentsDepth":"5","wordpressIsPaginate":"","commentTextMaxLength":"0","replyTextMaxLength":"0","commentTextMinLength":"1","replyTextMinLength":"1","storeCommenterData":"30","socialLoginAgreementCheckbox":"1","enableFbLogin":"0","fbUseOAuth2":"0","enableFbShare":"0","facebookAppID":"","facebookUseOAuth2":"0","enableGoogleLogin":"0","googleClientID":"","googleClientSecret":"","cookiehash":"a31c66ba4f532811f8ee51ea7b134144","isLoadOnlyParentComments":"0","scrollToComment":"1","commentFormView":"collapsed","enableDropAnimation":"1","isNativeAjaxEnabled":"1","userInteractionCheck":"1","enableBubble":"0","bubbleLiveUpdate":"0","bubbleHintTimeout":"45","bubbleHintHideTimeout":"10","cookieHideBubbleHint":"wpdiscuz_hide_bubble_hint","bubbleHintShowOnce":"1","bubbleHintCookieExpires":"7","bubbleShowNewCommentMessage":"1","bubbleLocation":"content_left","firstLoadWithAjax":"1","wc_copied_to_clipboard":"Copied to clipboard!","inlineFeedbackAttractionType":"blink","loadRichEditor":"1","wpDiscuzReCaptchaSK":"","wpDiscuzReCaptchaTheme":"light","wpDiscuzReCaptchaVersion":"2.0","wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","wpDiscuzIsShowOnSubscribeForm":"0","wmuEnabled":"0","wmuInput":"wmu_files","wmuMaxFileCount":"1","wmuMaxFileSize":"1048576","wmuPostMaxSize":"2147483648","wmuIsLightbox":"0","wmuMimeTypes":{"jpg":"image\/jpeg","jpeg":"image\/jpeg","jpe":"image\/jpeg","gif":"image\/gif","png":"image\/png","bmp":"image\/bmp","tiff":"image\/tiff","tif":"image\/tiff","ico":"image\/x-icon"},"wmuPhraseConfirmDelete":"Are you sure you want to delete this attachment?","wmuPhraseNotAllowedFile":"Not allowed file type","wmuPhraseMaxFileCount":"Maximum number of uploaded files is 1","wmuPhraseMaxFileSize":"Maximum upload file size is 1MB","wmuPhrasePostMaxSize":"Maximum post size is 2048MB","wmuPhraseDoingUpload":"Uploading in progress! Please wait.","msgEmptyFile":"File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.","msgPostIdNotExists":"Post ID not exists","msgUploadingNotAllowed":"Sorry, uploading not allowed for this post","msgPermissionDenied":"You do not have sufficient permissions to perform this action","wmuKeyImages":"images","wmuSingleImageWidth":"auto","wmuSingleImageHeight":"200","previewTemplate":"<div class=\"wmu-preview [PREVIEW_TYPE_CLASS]\" title=\"[PREVIEW_TITLE]\" data-wmu-type=\"[PREVIEW_TYPE]\" data-wmu-attachment=\"[PREVIEW_ID]\">\r\n    <div class=\"wmu-preview-remove\">\r\n        <img class=\"wmu-preview-img\" src=\"[PREVIEW_ICON]\">\r\n        <div class=\"wmu-file-name\">[PREVIEW_FILENAME]<\/div>\r\n        <!--        <div class=\"wmu-delete\">\u00a0<\/div>-->\r\n    <\/div>\r\n<\/div>\r\n","isUserRated":"0","version":"7.6.37","wc_post_id":"11579","isCookiesEnabled":"1","loadLastCommentId":"0","dataFilterCallbacks":[],"phraseFilters":[],"scrollSize":"32","url":"https:\/\/sysguides.com\/wp-admin\/admin-ajax.php","customAjaxUrl":"https:\/\/sysguides.com\/wp-content\/plugins\/wpdiscuz\/utils\/ajax\/wpdiscuz-ajax.php","bubbleUpdateUrl":"https:\/\/sysguides.com\/wp-json\/wpdiscuz\/v1\/update","restNonce":"687443d33b","is_rate_editable":"0","menu_icon":"https:\/\/sysguides.com\/wp-content\/plugins\/wpdiscuz\/assets\/img\/plugin-icon\/wpdiscuz-svg.svg","menu_icon_hover":"https:\/\/sysguides.com\/wp-content\/plugins\/wpdiscuz\/assets\/img\/plugin-icon\/wpdiscuz-svg_hover.svg","is_email_field_required":"1"};
+var wpdiscuzUCObj = {"msgConfirmDeleteComment":"Are you sure you want to delete this comment?","msgConfirmCancelSubscription":"Are you sure you want to cancel this subscription?","msgConfirmCancelFollow":"Are you sure you want to cancel this follow?","additionalTab":"0"};
+</script>
+<script id="wpdiscuz-combo-js-js-before">
+var wpdiscuzEditorOptions = {
+        modules: {
+        toolbar: "",
+        counter: {
+        uniqueID: "",
+        commentmaxcount : 0,
+        replymaxcount : 0,
+        commentmincount : 1,
+        replymincount : 1,
+        },
+                },
+        wc_be_the_first_text: "Be the First to Comment!",
+        wc_comment_join_text: "Join the discussion",
+        theme: 'snow',
+        debug: 'error'
+        };
+</script>
+<script src="https://sysguides.com/wp-content/plugins/wpdiscuz/assets/js/wpdiscuz-combo.min.js?ver=7.6.37" id="wpdiscuz-combo-js-js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"590c1036da674a06839649c0be8607a5","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+<!-- Page cached by LiteSpeed Cache 7.6.2 on 2025-11-17 13:31:13 -->
+<!-- X-LiteSpeed-Cache-Control: public,max-age=604800 -->
+<!-- Full varies: +webp -->
+<!-- X-LiteSpeed-Tag: 652_post,652_URL./install-debian-13-with-btrfs/,652_Po.11579,652_ -->
+<!-- Object Cache  [total] 3267 [hit_incall] 3080 [hit] 106 [miss_incall] 58 [miss] 23 [set] 20 -->
