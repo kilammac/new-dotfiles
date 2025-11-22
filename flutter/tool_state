@@ -1,3 +1,5 @@
 {
-  "is-bot": false
+  "is-bot": false,
+  "last-active-stable-version": "05db9689081f091050f01aed79f04dce0c750154",
+  "redisplay-welcome-message": true
 }
