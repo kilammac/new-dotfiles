@@ -57,28 +57,8 @@ return {
         "sqlls",
         "svelte",
         "ts_ls",
-        "dartls", -- Dart/Flutter
         "yamlls",
       },
-      -- Configuration spécifique Dart
-      -- require("lspconfig").dartls.setup({
-      --   cmd = { "dart", "language-server", "--protocol=lsp" },
-      --   filetypes = { "dart" },
-      --   root_dir = require("lspconfig.util").root_pattern("pubspec.yaml"),
-      --   init_options = {
-      --     closingLabels = true,
-      --     flutterOutline = true,
-      --     onlyAnalyzeProjectsWithOpenFiles = true,
-      --     outline = true,
-      --     suggestFromUnimportedLibraries = true,
-      --   },
-      --   settings = {
-      --     dart = {
-      --       completeFunctionCalls = true,
-      --       showTodos = true,
-      --     },
-      --   },
-      -- }),
 
       handlers = {
         -- Fonction appelée au chargement de chaque LSP de la liste ensure_installed
