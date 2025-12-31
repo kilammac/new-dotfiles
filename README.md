@@ -11,16 +11,13 @@ sudo pacman -S base-devel git curl wget unzip xz jdk17-openjdk
 ## 1. Installation Flutter (méthode officielle)
 
 ```bash
-# Créer le dossier de développement
-mkdir -p ~/development
-cd ~/development
 
 # Cloner Flutter
 git clone https://github.com/flutter/flutter.git -b stable
 
 # Variables d'environnement permanentes
 echo '# Flutter' >> ~/.bashrc
-echo 'export PATH="$PATH:$HOME/development/flutter/bin"' >> ~/.bashrc
+echo 'export PATH="$PATH:$HOME/flutter/bin"' >> ~/.bashrc
 echo 'export CHROME_EXECUTABLE="/usr/bin/chromium"' >> ~/.bashrc
 source ~/.bashrc
 
